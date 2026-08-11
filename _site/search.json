@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "papers.html",
+    "href": "papers.html",
+    "title": "Papers",
+    "section": "",
+    "text": "Working Papers\n[Title of your working paper] Giovanni [Surname], Leonzio Rizzo [Status, e.g., “Draft available on request” / “Submitted to Journal X” / “R&R at Journal Y”] [PDF] [Abstract] [Slides]\n\nOne or two sentence abstract summarizing the paper’s contribution.\n\n\n[Title of second paper] Giovanni [Surname] Working paper, [Year] [PDF]\n\nAbstract goes here.\n\n\n\n\nWork in Progress\n\n[Project title] — brief one-line description of what it’s about and current stage.\n[Project title] — brief one-line description.\n\n\n\n\nPresentations\n\n4th Milan PhD Economics Workshop, Bocconi University ([Month Year])\nIIPF Annual Congress ([Year], upcoming)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Giovanni [Surname]",
+    "section": "",
+    "text": "PhD student in Economics (EMIS, 39th cycle), University of Ferrara (UNIFE). Supervised by Prof. Leonzio Rizzo, in collaboration with Prof. Francesco Porcelli.\n\n\nMy research sits at the intersection of local government behavior, fiscal federalism, and causal inference, with a focus on:\n\nIntermunicipal cooperation\nProperty tax compliance (IMU tax gap)\nLand use and municipal budget allocation in Italian municipalities\n\n\n\n\n\n[Month Year] — Presented at the 4th Milan PhD Economics Workshop, Bocconi University.\n[Month Year] — Upcoming presentation at IIPF.\n\n\n\n\nDepartment of Economics and Management (DEM), University of Ferrara"
+  },
+  {
+    "objectID": "index.html#giovanni-surname",
+    "href": "index.html#giovanni-surname",
+    "title": "Giovanni [Surname]",
+    "section": "",
+    "text": "PhD student in Economics (EMIS, 39th cycle), University of Ferrara (UNIFE). Supervised by Prof. Leonzio Rizzo, in collaboration with Prof. Francesco Porcelli.\n\n\nMy research sits at the intersection of local government behavior, fiscal federalism, and causal inference, with a focus on:\n\nIntermunicipal cooperation\nProperty tax compliance (IMU tax gap)\nLand use and municipal budget allocation in Italian municipalities\n\n\n\n\n\n[Month Year] — Presented at the 4th Milan PhD Economics Workshop, Bocconi University.\n[Month Year] — Upcoming presentation at IIPF.\n\n\n\n\nDepartment of Economics and Management (DEM), University of Ferrara"
+  }
+]
