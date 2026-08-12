@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gcuttica.github.io/index.html</loc>
-    <lastmod>2026-08-11T08:15:48.233Z</lastmod>
+    <loc>https://gcuttica.github.io/projects.html</loc>
+    <lastmod>2026-08-12T08:43:45.427Z</lastmod>
   </url>
   <url>
     <loc>https://gcuttica.github.io/papers.html</loc>
-    <lastmod>2026-08-11T08:15:48.233Z</lastmod>
+    <lastmod>2026-08-12T08:43:45.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gcuttica.github.io/data.html</loc>
+    <lastmod>2026-08-12T08:43:45.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gcuttica.github.io/about.html</loc>
+    <lastmod>2026-08-12T08:43:45.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gcuttica.github.io/notes.html</loc>
+    <lastmod>2026-08-12T08:43:45.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gcuttica.github.io/index.html</loc>
+    <lastmod>2026-08-12T08:43:45.371Z</lastmod>
   </url>
 </urlset>
