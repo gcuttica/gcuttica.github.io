@@ -1,5 +1,7 @@
 project:
   type: website
+  resources:
+    - google96bc4eb628ee8060.html
 
 website:
   title: "Giovanni Cuttica"
