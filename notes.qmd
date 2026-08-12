@@ -1,5 +1,11 @@
 ---
 title: "Notes"
+listing:
+  contents: notes
+  type: default
+  sort: "date desc"
+  categories: true
+  fields: [title, subtitle, date]
 ---
 
 *This page is under construction — check back soon! It will include personal notes and lecture decks from my PhD.*

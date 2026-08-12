@@ -1,0 +1,9 @@
+---
+title: "Experiment 1"
+subtitle: "Experiment 1"
+description: "Experiment 1"
+date: 2026-08-12
+categories: [Applied Econometrics]
+---
+
+Experiment 1

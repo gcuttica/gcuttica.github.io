@@ -1,5 +1,11 @@
 ---
 title: "Data Visualizations"
+listing:
+  contents: data
+  type: default
+  sort: "date desc"
+  categories: true
+  fields: [title, subtitle, date]
 ---
 
 *This page is under construction — check back soon! It will feature interactive data visualizations from my projects.*
