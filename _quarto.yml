@@ -2,26 +2,28 @@ project:
   type: website
 
 website:
-  title: "Giovanni [Surname]"
-  description: "Applied economics research: intermunicipal cooperation, property tax compliance, fiscal federalism"
+  title: "Giovanni Cuttica"
+  description: "Applied economics: public economics, policy evaluation, and applied econometrics"
   navbar:
     left:
       - href: index.qmd
         text: Home
+      - href: about.qmd
+        text: About Me
       - href: papers.qmd
-        text: Papers
+        text: Papers and Projects
     right:
       - icon: envelope
-        href: mailto:your.email@unife.it
+        href: mailto:giovanni.cuttica@unife.it
       - icon: github
-        href: https://github.com/yourusername
+        href: https://github.com/gcuttica
       - icon: linkedin
-        href: https://linkedin.com/in/yourusername
+        href: https://www.linkedin.com/in/giovanni-cuttica-6742b9140/
 
 format:
   html:
     theme:
-      - cosmo
+      - flatly
     css: styles.css
     toc: false
     grid:

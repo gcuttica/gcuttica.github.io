@@ -2,40 +2,43 @@
 title: ""
 about:
   template: trestles
-  image: profile.jpg
+  image: profile.png
+  image-width: 12em
+  image-shape: round
   links:
     - icon: envelope
       text: Email
-      href: mailto:your.email@unife.it
+      href: mailto:giovanni.cuttica@unife.it
     - icon: github
       text: GitHub
-      href: https://github.com/yourusername
+      href: https://github.com/gcuttica
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com/in/yourusername
+      href: https://www.linkedin.com/in/giovanni-cuttica-6742b9140/
     - text: "Google Scholar"
-      href: https://scholar.google.com/citations?user=yourid
+      href: https://scholar.google.com/citations?user=HtD5OZAAAAAJ&hl=en
 ---
 
-## Giovanni [Surname]
+## Giovanni Cuttica
 
-PhD student in Economics (EMIS, 39th cycle), University of Ferrara (UNIFE).
-Supervised by Prof. Leonzio Rizzo, in collaboration with Prof. Francesco Porcelli.
+Hi! My name is Giovanni, and I am a PhD candidate in Economics, specializing in Public Economics, at the University of Ferrara (Italy). I'll submit my thesis by October 2026, and - if everything goes well - I'll defend my dissertation in spring 2027.
 
-### Research interests
+You can read more about my background and find my CV on the [About Me](about.qmd) page.
 
-My research sits at the intersection of local government behavior, fiscal
-federalism, and causal inference, with a focus on:
+### Research Interests
+I have three streams of research. 
 
-- Intermunicipal cooperation
-- Property tax compliance (IMU tax gap)
-- Land use and municipal budget allocation in Italian municipalities
+- The first one is about public economics and political economy, with a particular focus on local government behavior and fiscal federalism. 
 
-### News
+- The second one is about regional economics, with a particular focus on the dynamics of regional development and the role of public institutions in managing resources. 
 
-- *[Month Year]* — Presented at the 4th Milan PhD Economics Workshop, Bocconi University.
-- *[Month Year]* — Upcoming presentation at IIPF.
+- The third one is more about applying "econometric stuff" to better understand the causal relationships between variables in economics and social sciences.
 
-### Contact
+You can find a list of my publications and working papers on the [Papers and Projects](papers.qmd) page.
 
-Department of Economics and Management (DEM), University of Ferrara
+### Miscellaneous (*work in progress*)
+You can find some Data Visualizations born during my projects on the [Data Viz.](data.qmd) page, some of them are interactive and you can play with them. 
+
+I also have some personal notes that I wrote during my PhD and some deck of lectures on the [Notes](notes.qmd) page. 
+
+Lastly, you can find some of my personal thoughts on the [Sermons](projects.qmd) page (highly unstructured and not always in english, but I like to write them down).
