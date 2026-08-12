@@ -4,6 +4,7 @@ project:
 website:
   title: "Giovanni Cuttica"
   description: "Applied economics: public economics, policy evaluation, and applied econometrics"
+  search: false
   navbar:
     left:
       - href: index.qmd
@@ -12,13 +13,12 @@ website:
         text: About Me
       - href: papers.qmd
         text: Papers and Projects
-    right:
-      - icon: envelope
-        href: mailto:giovanni.cuttica@unife.it
-      - icon: github
-        href: https://github.com/gcuttica
-      - icon: linkedin
-        href: https://www.linkedin.com/in/giovanni-cuttica-6742b9140/
+      - href: notes.qmd
+        text: Notes
+      - href: data.qmd
+        text: Data
+      - href: musings.qmd
+        text: Musings
 
 format:
   html:
