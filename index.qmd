@@ -44,4 +44,4 @@ You can find some Data Visualizations born during my projects on the [Data Viz.]
 
 I also have some personal notes that I wrote during my PhD and some deck of lectures on the [Notes](notes.qmd) page. 
 
-Lastly, you can find some of my personal thoughts on the [Musings](projects.qmd) page (highly unstructured and not always in english, but I like to write them down).
+Lastly, you can find some of my personal thoughts on the [Musings](musings.qmd) page (highly unstructured and not always in english, but I like to write them down).
