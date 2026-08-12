@@ -5,5 +5,19 @@
       "/musings/experiment-2.html",
       "/musings/experiment-1.html"
     ]
+  },
+  {
+    "listing": "/notes.html",
+    "items": [
+      "/notes/experiment-2.html",
+      "/notes/experiment-1.html"
+    ]
+  },
+  {
+    "listing": "/data.html",
+    "items": [
+      "/data/experiment-2.html",
+      "/data/experiment-1.html"
+    ]
   }
 ]
