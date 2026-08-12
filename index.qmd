@@ -7,8 +7,11 @@ about:
   image-shape: round
   links:
     - icon: envelope
-      text: Email
+      text: giovanni.cuttica@unife.it
       href: mailto:giovanni.cuttica@unife.it
+    - icon: envelope
+      text: cuttica@ires.piemonte.it
+      href: mailto:cuttica@ires.piemonte.it
     - icon: github
       text: GitHub
       href: https://github.com/gcuttica
