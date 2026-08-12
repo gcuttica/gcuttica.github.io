@@ -1,5 +1,8 @@
 ---
 title: "Musings"
+listing:
+  contents: musings
+  type: default
+  sort: "date desc"
+  fields: [title, subtitle, date]
 ---
-
-*This page is under construction — check back soon!*
