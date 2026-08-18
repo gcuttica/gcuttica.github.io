@@ -7,6 +7,8 @@ website:
   title: "Giovanni Cuttica"
   description: "Applied economics: public economics, policy evaluation, and applied econometrics"
   search: false
+  open-graph: true
+  twitter-card: true
   navbar:
     left:
       - href: index.qmd

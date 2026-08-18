@@ -1,5 +1,6 @@
 ---
 title: ""
+description: "Giovanni Cuttica is a PhD candidate in Economics at the University of Ferrara, specializing in public economics, regional economics, and applied econometrics."
 about:
   template: trestles
   image: profile.png

@@ -1,5 +1,6 @@
 ---
 title: "About Me"
+description: "Background and CV of Giovanni Cuttica, PhD candidate in Economics at the University of Ferrara, formerly a researcher at IRES Piemonte."
 ---
 
 I graduated in Political Science and Public Administration at the University of Turin. During my Master's thesis, I developed a strong interest in policy evaluation and decided to continue my studies in this field, joining a course in Policy Analysis and Evaluation promoted by the Italian Parliament and the University of Venice.
