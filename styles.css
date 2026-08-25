@@ -1,1 +1,16 @@
 /* css styles */
+
+details summary {
+  cursor: pointer;
+  font-style: italic;
+  color: #18bc9c;
+  margin-top: 0.4em;
+}
+
+details summary::marker {
+  color: #18bc9c;
+}
+
+details[open] summary {
+  margin-bottom: 0.4em;
+}
