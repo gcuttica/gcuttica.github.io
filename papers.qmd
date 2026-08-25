@@ -1,6 +1,6 @@
 ---
 title: "Papers"
-description: "Working papers, publications, and policy reports by Giovanni Cuttica in public economics, regional economics, and applied econometrics."
+description: "Working papers, publications, and policy reports by Giovanni Cuttica."
 ---
 
 ### Working Papers
