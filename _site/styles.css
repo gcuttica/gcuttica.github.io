@@ -14,3 +14,8 @@ details summary::marker {
 details[open] summary {
   margin-bottom: 0.4em;
 }
+
+.quarto-title-block .description {
+  font-style: italic;
+  color: #999999;
+}
