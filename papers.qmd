@@ -5,7 +5,7 @@ description: "Working papers, publications, and policy reports by Giovanni Cutti
 
 ### Working Papers
 
-**Does Immigration Affect the Tax Morale of Natives? Evidence from Spain.** [*Slides*](slide_tax_morale_immigration_ENG.pdf)
+**Does Immigration Affect the Tax Morale of Natives? Evidence from Spain.** [*Slides*](pdf/slide_tax_morale_immigration_ENG.pdf)
 
 Giovanni Cuttica
 [*Submitted*]
@@ -19,7 +19,7 @@ Giovanni Cuttica, Santino Piazza
 
 ---
 
-**Does Intermunicipal Cooperation Decrease the Property Tax Gap? Evidence from Italy** [*Slides*](taxgap_IMC.pdf)
+**Does Intermunicipal Cooperation Decrease the Property Tax Gap? Evidence from Italy** [*Slides*](pdf/taxgap_IMC.pdf)
 
 Giovanni Cuttica, Francesco Porcelli, Leonzio Rizzo
 
@@ -30,7 +30,7 @@ Inter-municipal cooperation (IMC) offers the scale economies of larger jurisdict
 
 ---
 
-**The Promised Land? Municipal Electoral Cycles and Land Consumption in Italy** [*PDF*](cifrel_wp_2026_09_land_consumption.pdf)
+**The Promised Land? Municipal Electoral Cycles and Land Consumption in Italy** [*PDF*](pdf/cifrel_wp_2026_09_land_consumption.pdf)
 
 Giovanni Cuttica, Luisa Loiacono, Leonzio Rizzo, Riccardo Secomandi
 [*CIFREL Working Paper No. 2026-09*](https://centridiricerca.unicatt.it/cifrel/en/publications/working-papers.html#accordion-65b8b91f24-item-8bccd12c66)
@@ -42,7 +42,7 @@ Does the electoral calendar shape construction activity in Italian municipalitie
 
 ---
 
-**Weathering the Storm: Inter-Municipal Cooperation and Citizens' Perceptions of Flood Preparedness** [*PDF*](cifrel_wp_2026_08_weathering_storm.pdf)
+**Weathering the Storm: Inter-Municipal Cooperation and Citizens' Perceptions of Flood Preparedness** [*PDF*](pdf/cifrel_wp_2026_08_weathering_storm.pdf)
 
 Giovanni Cuttica, Luisa Loiacono, Leonzio Rizzo, Riccardo Secomandi
 [*CIFREL Working Paper No. 2026-08*](https://centridiricerca.unicatt.it/cifrel/en/publications/working-papers.html#accordion-65b8b91f24-item-8bccd12c66)
@@ -54,7 +54,7 @@ We study whether the provision of specific functions through inter-municipal coo
 
 ---
 
-**Income Tax Indexation and Fiscal Drag: Effects on the Personal Tax Burden** [*PDF*](cifrel_wp_2026_04_tax_indexation.pdf)
+**Income Tax Indexation and Fiscal Drag: Effects on the Personal Tax Burden** [*PDF*](pdf/cifrel_wp_2026_04_tax_indexation.pdf)
 
 Giovanni Cuttica, Luisa Loiacono, Leonzio Rizzo, Riccardo Secomandi
 [*CIFREL Working Paper No. 2026-04*](https://centridiricerca.unicatt.it/cifrel/en/publications/working-papers.html#accordion-65b8b91f24-item-8bccd12c66)
