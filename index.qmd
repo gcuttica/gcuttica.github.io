@@ -25,24 +25,24 @@ about:
 
 ## Giovanni Cuttica
 
-Hi! My name is Giovanni, and I am a PhD candidate in Economics, specializing in Public Economics, at the University of Ferrara (Italy). I'll submit my thesis by October 2026, and - if everything goes well - I'll defend my dissertation in spring 2027.
+Hi! My name is Giovanni, and I am a PhD candidate in Economics, specializing in Public Economics, at the University of Ferrara (Italy). I'll submit my thesis by October 2026 and, if everything goes well, I'll defend my dissertation in spring 2027.
 
 You can read more about my background and find my CV on the [About Me](about.qmd) page.
 
 ### Research Interests
 I have three streams of research. 
 
-- The first one is about public economics and political economy, with a particular focus on local government behavior and fiscal federalism. 
+- The first one is about public economics and political economy, with a particular focus on local government and fiscal federalism. My ideal unit of observation is the municipality, and I'm interested in studying how local governments behave in terms of public service provision, taxation, intermunicipal cooperation, and land-use decisions.
 
-- The second one is about regional economics, with a particular focus on the dynamics of regional development and the role of public institutions in managing resources. 
+- The second one is about regional economics, focusing on the dynamics of regional development and the role of public institutions in managing resources and tackling economic disparities between territories. I also try to link to the private sector by studying the evolution of local firms and their interaction with public institutions, in particular in Piedmont.
 
-- The third one is more about applying "econometric stuff" to better understand the causal relationships between variables in economics and social sciences.
+- The third one is more about policy evaluation and applying "econometric stuff" to better understand the causal relationships between phenomena in economics and social sciences.
 
 You can find a list of my publications and working papers on the [Papers and Projects](papers.qmd) page.
 
 ### Miscellaneous (*work in progress*)
-You can find some Data Visualizations born during my projects on the [Data Viz.](data.qmd) page, some of them are interactive and you can play with them. 
+You can find some data visualizations created during my projects on the [Data Viz.](data.qmd) page. Some of them are interactive, so you can play with them.
 
-I also have some personal notes that I wrote during my PhD and some deck of lectures on the [Notes](notes.qmd) page. 
+I also have some personal notes that I wrote during my PhD and some decks of lectures on the [Notes](notes.qmd) page.
 
-Lastly, you can find some of my personal thoughts on the [Musings](musings.qmd) page (highly unstructured and not always in english, but I like to write them down).
+Lastly, you can find some of my personal thoughts on the [Musings](musings.qmd) page (highly unstructured and not always in English, but I like to write them down).
