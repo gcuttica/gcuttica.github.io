@@ -2,22 +2,22 @@
   {
     "listing": "/musings.html",
     "items": [
-      "/musings/experiment-2.html",
-      "/musings/experiment-1.html"
+      "/musings/2026-10-09-comuni-welfare-locale.html",
+      "/musings/2026-07-20-inerzia-innovazione.html",
+      "/musings/2026-07-20-territori-cambiano-forma.html",
+      "/musings/2026-07-20-elefante-pil.html"
     ]
   },
   {
     "listing": "/data.html",
     "items": [
-      "/data/experiment-2.html",
-      "/data/experiment-1.html"
+      "/data/piemonte-fiscal-map/index.html"
     ]
   },
   {
     "listing": "/notes.html",
     "items": [
-      "/notes/experiment-2.html",
-      "/notes/experiment-1.html"
+      "/notes/local-public-finance-italy.html"
     ]
   }
 ]

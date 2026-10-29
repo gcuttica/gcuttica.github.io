@@ -8,4 +8,4 @@ listing:
   fields: [title, subtitle, date]
 ---
 
-*This page is under construction — check back soon! It will feature interactive data visualizations from my projects.*
+*Interactive maps and charts built from public data, mostly on Italian municipalities.*

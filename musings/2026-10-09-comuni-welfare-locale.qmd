@@ -1,0 +1,18 @@
+---
+title: "Dove i comuni si svuotano, il welfare locale “invecchia”"
+subtitle: "lavoce.info · with Santino Piazza"
+description: "In Piedmont's shrinking small municipalities, social spending leans towards the elderly, mostly because of fixed commitments rather than political choices."
+date: 2026-10-09
+---
+
+```{=html}
+<div class="mus-source">
+  Originally published on <a href="https://lavoce.info/archives/114175/dove-i-comuni-si-svuotano-il-welfare-locale-invecchia/" target="_blank" rel="noopener">lavoce.info</a>
+  on 9 October 2026 · Giovanni Cuttica and Santino Piazza
+  <a class="btn btn-outline-secondary" href="https://lavoce.info/archives/114175/dove-i-comuni-si-svuotano-il-welfare-locale-invecchia/" target="_blank" rel="noopener">Read on lavoce.info</a>
+</div>
+<iframe class="mus-mirror" src="https://lavoce.info/archives/114175/dove-i-comuni-si-svuotano-il-welfare-locale-invecchia/" loading="lazy"
+        title="Dove i comuni si svuotano, il welfare locale “invecchia” – lavoce.info"></iframe>
+<p class="mus-fallback">If the article does not appear above, read it on
+  <a href="https://lavoce.info/archives/114175/dove-i-comuni-si-svuotano-il-welfare-locale-invecchia/" target="_blank" rel="noopener">lavoce.info</a>.</p>
+```

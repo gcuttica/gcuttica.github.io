@@ -1,0 +1,294 @@
+2024_Rendiconto_SDB_PIEMONTE.zip               107,094,706 bytes
+POSAS_2024_it_Comuni.zip                         8,517,397 bytes
+Limiti01012024_g.zip                            11,882,341 bytes
+add_irpef_2024.csv                               1,242,200 bytes
+elenco_comuni_istat.csv                          1,126,843 bytes
+2024_Rendiconto SDB Entrate_PIEMONTE.csv                               rows  23,057  (file lines - header = 23,057)  -> difference, deve essere 0: 0
+2024_Rendiconto SDB Entrate Riepilogo Titoli_PIEMONTE.csv              rows  10,315  (file lines - header = 10,315)  -> difference, deve essere 0: 0
+2024_Rendiconto SDB Spese Riepilogo Missioni_PIEMONTE.csv              rows  20,464  (file lines - header = 20,464)  -> difference, deve essere 0: 0
+2024_Rendiconto SDB Spese Riepilogo Titoli_PIEMONTE.csv                rows   7,355  (file lines - header = 7,355)  -> difference, deve essere 0: 0
+2024_Rendiconto SDB Quadro Generale Riassuntivo Entrate_PIEMONTE.csv   rows  10,656  (file lines - header = 10,656)  -> difference, deve essere 0: 0
+2024_Rendiconto SDB Quadro Generale Riassuntivo Spese_PIEMONTE.csv     rows   7,992  (file lines - header = 7,992)  -> difference, deve essere 0: 0
+2024_Rendiconto SDB Allegato d Entrate per Categorie Enti Locali_PIEMO rows  45,666  (file lines - header = 45,666)  -> difference, deve essere 0: 0
+entrate    Residui Attivi Iniziali                       bad format, deve essere 0: 0   empty: 897
+entrate    Riscos. in CR                                 bad format, deve essere 0: 0   empty: 1155
+entrate    Riacc. Res.                                   bad format, deve essere 0: 0   empty: 1502
+entrate    Res. Att. In CR                               bad format, deve essere 0: 0   empty: 941
+entrate    Pre.  Def. in CC                              bad format, deve essere 0: 0   empty: 204
+entrate    Riscos. in CC                                 bad format, deve essere 0: 0   empty: 503
+entrate    Accert. in CC                                 bad format, deve essere 0: 0   empty: 426
+entrate    Magg. o min. entr. di CC                      bad format, deve essere 0: 0   empty: 139
+entrate    Res. Att. In CC                               bad format, deve essere 0: 0   empty: 570
+entrate    Pre.  Def. Di Cassa                           bad format, deve essere 0: 0   empty: 111
+entrate    Tot. Riscos.                                  bad format, deve essere 0: 0   empty: 285
+entrate    Magg. o min. entr. di Cassa                   bad format, deve essere 0: 0   empty: 31
+entrate    Res. Att. da riportare tot.                   bad format, deve essere 0: 0   empty: 415
+ent_tit    Residui Attivi Iniziali                       bad format, deve essere 0: 0   empty: 190
+ent_tit    Previsioni Definitive di Competenza           bad format, deve essere 0: 0   empty: 48
+ent_tit    Previsioni Definitive di Cassa                bad format, deve essere 0: 0   empty: 11
+ent_tit    Riscossioni in C/Residui                      bad format, deve essere 0: 0   empty: 267
+ent_tit    Riscossioni in C/Competenza                   bad format, deve essere 0: 0   empty: 176
+ent_tit    Totale Riscossioni                            bad format, deve essere 0: 0   empty: 131
+ent_tit    Riaccertamenti Residui                        bad format, deve essere 0: 0   empty: 381
+ent_tit    Accertamenti                                  bad format, deve essere 0: 0   empty: 166
+ent_tit    Residui Attivi in C/Residui                   bad format, deve essere 0: 0   empty: 209
+ent_tit    Maggiori o Minori Entrate di Cassa            bad format, deve essere 0: 0   empty: 7
+ent_tit    Maggiori o Minori Entrate di Competenza       bad format, deve essere 0: 0   empty: 43
+ent_tit    Residui Attivi in C/Competenza                bad format, deve essere 0: 0   empty: 184
+ent_tit    Totale Residui Attivi da Riportare            bad format, deve essere 0: 0   empty: 123
+spe_mis    Residui Passivi Iniziali                      bad format, deve essere 0: 0   empty: 688
+spe_mis    Previsioni Definitive di Competenza           bad format, deve essere 0: 0   empty: 89
+spe_mis    Previsioni Definitive di Cassa                bad format, deve essere 0: 0   empty: 54
+spe_mis    Pagamenti C/Residuo                           bad format, deve essere 0: 0   empty: 819
+spe_mis    Pagamenti C/Competenza                        bad format, deve essere 0: 0   empty: 527
+spe_mis    Totale Pagamenti                              bad format, deve essere 0: 0   empty: 402
+spe_mis    Riaccertamenti Residui                        bad format, deve essere 0: 0   empty: 1256
+spe_mis    Impegni                                       bad format, deve essere 0: 0   empty: 432
+spe_mis    Fondo Puriennale Vincolato                    bad format, deve essere 0: 0   empty: 1826
+spe_mis    Economie C/Competenza                         bad format, deve essere 0: 0   empty: 96
+spe_mis    Residui Passivi da Esercizi Precedenti        bad format, deve essere 0: 0   empty: 803
+spe_mis    Residui Passivi da Esercizio di Competenza    bad format, deve essere 0: 0   empty: 478
+spe_mis    Residui Passivi da riportare                  bad format, deve essere 0: 0   empty: 404
+spe_tit    Residui Passivi Iniziali                      bad format, deve essere 0: 0   empty: 250
+spe_tit    Previsioni Definitive di Competenza           bad format, deve essere 0: 0   empty: 12
+spe_tit    Previsioni Definitive di Cassa                bad format, deve essere 0: 0   empty: 13
+spe_tit    Pagamenti in C/Residui                        bad format, deve essere 0: 0   empty: 275
+spe_tit    Pagamenti in C/Competenza                     bad format, deve essere 0: 0   empty: 115
+spe_tit    Totale Pagamenti                              bad format, deve essere 0: 0   empty: 105
+spe_tit    Riaccertamenti Residui                        bad format, deve essere 0: 0   empty: 396
+spe_tit    Impegni                                       bad format, deve essere 0: 0   empty: 114
+spe_tit    Fondo Pluriennale Vincolato                   bad format, deve essere 0: 0   empty: 552
+spe_tit    Economie di Competenza                        bad format, deve essere 0: 0   empty: 14
+spe_tit    Residui Passivi da Esercizi Precedenti        bad format, deve essere 0: 0   empty: 262
+spe_tit    Residui Passivi da Esercizio di Competenza    bad format, deve essere 0: 0   empty: 159
+spe_tit    Residui passivi da riportare totale           bad format, deve essere 0: 0   empty: 153
+qgr_ent    Accertamenti                                  bad format, deve essere 0: 0   empty: 0
+qgr_ent    Incassi                                       bad format, deve essere 0: 0   empty: 0
+qgr_spe    Impegni                                       bad format, deve essere 0: 0   empty: 0
+qgr_spe    Pagamenti                                     bad format, deve essere 0: 0   empty: 0
+categorie  Accertamenti                                  bad format, deve essere 0: 0   empty: 198
+categorie  Riscossioni in C/Residui                      bad format, deve essere 0: 0   empty: 2032
+categorie  di cui entrate accertate non ricorrenti       bad format, deve essere 0: 0   empty: 3803
+categorie  Riscossioni in C/Competenza                   bad format, deve essere 0: 0   empty: 398
+
+Raw totals, all entities in the file
+  entrate accertamenti        27,198,892,540.31
+  spese impegni (missioni)    26,746,697,962.22
+  spese impegni (titoli)      26,746,697,962.22
+
+Rows and entities by type of entity (entrate file)
+                                                              righe  enti      accertamenti
+tipo_ente Descrizione Tipologia Soggetto                                                   
+CONSOR    CONSORZI DI ENTI LOCALI DI CUI ALL' ART. 2 DEL ...    516    38  1,312,571,200.27
+ELCMET    CITTA' METROPOLITANE                                   18     1    560,340,488.87
+ELCOMU    COMUNI                                              21144  1179  7,328,840,292.26
+ELPROV    PROVINCE                                              133     7    522,614,651.47
+ELUCOM    UNIONI DI COMUNI                                     1006    88    241,239,795.08
+ESCFIB    ENTI STRUMENTALI IN CONTABILITA' FINANZIARIA IN...     10     1    216,680,701.39
+ESCFIG    ENTI STRUMENTALI IN CONTABILITA' FINANZIARIA IN...     17     1    249,867,910.11
+ESCFIH    ENTI STRUMENTALI IN CONTABILITA' FINANZIARIA IN...    172    14    156,985,538.11
+ESCFIM    ENTI STRUMENTALI IN CONTABILITA' FINANZIARIA IN...     12     1      9,209,358.66
+ESCFIO    ENTI STRUMENTALI IN CONTABILITA' FINANZIARIA IN...      6     1      8,853,735.97
+
+
+comuni not in Piemonte, deve essere 0: 0
+comuni with an unknown province code, deve essere 0: 0
+comuni with a closing date (Data Cessazione), deve essere 0: 0
+BDAP codes with more than one ISTAT code, deve essere 0: 0
+ISTAT codes with more than one BDAP code, deve essere 0: 0
+
+Comuni by province (rows and entities)
+                       righe  comuni     accertamenti
+Descrizione Provincia                                
+ALESSANDRIA             3216     187   748,546,892.23
+ASTI                    2106     116   307,897,044.07
+BIELLA                  1375      74   267,569,026.79
+CUNEO                   4325     247   948,225,915.92
+NOVARA                  1637      87   498,507,966.95
+TORINO                  5759     312 3,915,626,330.72
+VERBANO-CUSIO-OSSOLA    1306      74   332,281,512.60
+VERCELLI                1420      82   310,185,602.98
+entrate         exact duplicate rows, deve essere 0: 0   duplicates on the key ['pro_com_t', 'cod_titolo', 'cod_tipologia'], deve essere 0: 0
+spese missioni  exact duplicate rows, deve essere 0: 0   duplicates on the key ['pro_com_t', 'cod_missione'], deve essere 0: 0
+spese titoli    exact duplicate rows, deve essere 0: 0   duplicates on the key ['pro_com_t', 'cod_titolo'], deve essere 0: 0
+
+Entrate (accertamenti), comuni, by titolo - three routes
+          tipologie  riepilogo_titoli  quadro_generale  diff_tip_rt  diff_tip_qg
+01 3,142,553,901.32  3,142,553,901.32 3,142,553,901.32         0.00         0.00
+02   627,963,092.39    627,963,092.39   627,963,092.39         0.00         0.00
+03 1,099,624,350.04  1,099,624,350.04 1,099,624,350.04         0.00         0.00
+04 1,210,939,057.60  1,210,939,057.60 1,210,939,057.60         0.00         0.00
+05    47,842,492.10     47,842,492.10    47,842,492.10         0.00         0.00
+06    82,300,326.19     82,300,326.19    82,300,326.19         0.00         0.00
+07   159,243,523.00    159,243,523.00   159,243,523.00         0.00         0.00
+09   958,373,549.62    958,373,549.62   958,373,549.62         0.00         0.00
+max abs difference, deve essere 0 (cents): 0.0
+
+Spese impegni: missioni vs titoli, comuni with |diff| > 1 euro, deve essere 0: 0    total diff: 0.0
+
+Spese (impegni), comuni, by titolo - two routes
+    riepilogo_titoli  quadro_generale   diff
+01  4,142,912,653.65 4,142,912,300.94 352.71
+02  1,595,493,636.44 1,595,493,636.44   0.00
+03     45,680,686.62    45,680,686.62   0.00
+04    262,037,194.79   262,037,194.79   0.00
+05    159,273,496.33   159,273,496.33   0.00
+07    958,374,692.33   958,374,692.33   0.00
+
+Spese impegni by missione, comuni (sum of groups = total)
+cod_missione  missione                                                    
+01            Servizi istituzionali,  generali e di gestione                 1,578,976,379.76
+02            Giustizia                                                          3,335,026.89
+03            Ordine pubblico e sicurezza                                      255,783,630.00
+04            Istruzione e diritto allo studio                                 659,146,591.32
+05            Tutela e valorizzazione dei beni e delle attivita' culturali     224,469,163.69
+06            Politiche giovanili, sport e tempo libero                        170,859,218.06
+07            Turismo                                                           56,915,979.34
+08            Assetto del territorio ed edilizia abitativa                     211,269,943.07
+09            Sviluppo sostenibile e tutela del territorio e dell'ambiente     985,888,573.49
+10            Trasporti e diritto alla mobilita'                               783,887,460.43
+11            Soccorso civile                                                   22,335,704.98
+12            Diritti sociali, politiche sociali e famiglia                    697,609,609.80
+13            Tutela della salute                                                4,734,853.99
+14            Sviluppo economico e competitivita'                               60,454,142.93
+15            Politiche per il lavoro e la formazione professionale              9,300,613.52
+16            Agricoltura, politiche agroalimentari e pesca                      6,410,237.24
+17            Energia e diversificazione delle fonti energetiche                29,358,868.93
+18            Relazioni con le altre autonomie territoriali e locali               937,777.24
+19            Relazioni internazionali                                           1,605,680.28
+20            Fondi e accantonamenti                                               479,146.80
+50            Debito pubblico                                                  281,127,292.48
+60            Anticipazioni finanziarie                                        160,511,773.59
+99            Servizi per conto terzi                                          958,374,692.33
+Name: Impegni, dtype: float64
+sum of missioni - total, deve essere 0: 0.0
+
+POSAS rows: 805800  ages: 0 - 999 (999 = total)
+comuni where total row != sum over ages, deve essere 0: 0
+Piemonte comuni in POSAS: 1180   population: 4,251,623
+comuni with a missing name in the boundaries file (filled from ISTAT list): 0
+comuni with a missing name after filling, deve essere 0: 0
+
+Piemonte comuni in the boundaries file: 1180
+
+comuni in the categories file: 1178   (tipologie file: 1179 )
+comuni missing in the categories file (listed):
+pro_com_t Denominazione Soggetto
+   096035    COMUNE DI MONGRANDO
+comune x tipologia where categories != tipologia (|diff| > 1 euro), deve essere 0: 0
+
+comuni with budget data: 1179
+sum of ent_t* - total entrate, deve essere 0: 0.0
+
+merge boundaries x budget:
+_merge
+both          1179
+left_only        1
+right_only       0
+Name: count, dtype: int64
+budget comuni not on the map, deve essere 0: 0
+comuni on the map without budget data (listed):
+pro_com_t     COMUNE
+   005021 Cassinasco
+
+merge with population:
+_merge
+both          1180
+left_only        0
+right_only       0
+Name: count, dtype: int64
+comuni on the map without population, deve essere 0: 0
+population of map comuni - POSAS Piemonte total, deve essere 0: 0
+
+comuni with no TARI in Titolo 1 (tariffa corrispettiva): 30
+
+merge with ISTAT codice catastale:
+_m_el
+both          1180
+left_only        0
+right_only       0
+Name: count, dtype: int64
+merge with Finanze rates 2024:
+_m_add
+both          1180
+left_only        0
+right_only       0
+Name: count, dtype: int64
+comuni on the map without a 2024 rate row, deve essere 0: 0
+
+Cross-table: BDAP addizionale = 0  x  Finanze rate > 0 (comuni with categories)
+rate > 0      False  True 
+BDAP add = 0              
+False             7   1079
+True             87      5
+comuni with IMU not booked in its category: 26
+comuni with addizionale not booked in its category (rate > 0): 5
+pro_com_t              COMUNE  ent_cat_imu  ent_cat_addirpef  add_rate_max
+   001031         Borgomasino         0.00         54,493.48          0.70
+   001062           Caselette   587,453.49              0.00          0.60
+   001165              Noasca         0.00              0.00          0.00
+   001169            Novalesa         0.00          8,186.18          0.10
+   001295            Vestignè         0.00        105,000.00          0.80
+   002052               Crova   121,577.30              0.00          0.60
+   002171    Cellio con Breia         0.00         79,856.64          0.50
+   003164           Vinzaglio         0.00         35,000.00          0.50
+   004175              Priero         0.00         32,805.93          0.40
+   005117  Villafranca d'Asti         0.00        330,000.00          0.80
+   006008      Alzano Scrivia         0.00         38,165.00          0.80
+   006023             Bozzole         0.00         35,000.00          0.80
+   006029     Capriata d'Orba         0.00        181,322.75          0.55
+   006053 Castelnuovo Scrivia         0.00        477,000.00          0.60
+   006058        Cerreto Grue         0.00         26,735.40          0.50
+   006066             Dernice         0.00              0.00          0.00
+   006068           Felizzano         0.00        220,000.00          0.80
+   006079            Garbagna         0.00         57,560.00          0.70
+   006088               Lerma         0.00         83,065.00          0.80
+   006107          Montegioco         0.00         17,943.51          0.50
+   006135  Ponzano Monferrato         0.00         29,178.45          0.80
+   006141          Quargnento         0.00         94,321.34          0.50
+   006142          Quattordio         0.00         91,774.75          0.75
+   006146   Roccaforte Ligure         0.00              0.00          0.00
+   006148    Rocchetta Ligure    22,000.00              0.00          0.70
+   006156  Sant'Agata Fossili     3,000.00              0.00          0.80
+   006170           Tassarolo         0.00         45,828.71          0.40
+   103002     Anzola d'Ossola         0.00              0.00          0.80
+   103021       Ceppo Morelli         0.00              0.00          0.00
+   103048               Nonio         0.00         27,277.88          0.20
+
+Indicators, comuni with budget data
+                    count     mean       std    min     5%    25%    50%      75%       95%        max
+v_tax_pc         1,148.00   436.04    304.13  37.73 228.84 301.94 356.86   454.20    898.92   3,358.35
+v_transfer_share 1,179.00    27.26     12.76   2.31   8.64  18.47  25.71    35.12     50.90      77.42
+v_curr_spend_pc  1,179.00 1,156.26  1,008.51 429.55 599.05 728.73 865.96 1,164.09  2,957.96  18,117.08
+v_cap_spend_pc   1,179.00 1,044.63  2,366.32   0.00  96.44 237.62 434.28   929.05  3,592.88  44,873.51
+v_debt_repay_pc  1,179.00    52.46     80.19   0.00   2.34  16.52  33.06    59.38    151.23   1,127.86
+pop_2024         1,179.00 3,605.66 25,750.01  41.00 127.90 432.00 970.00 2,231.00 10,613.00 851,199.00
+missing values among comuni with budget data (= comuni without categories, listed above): 31
+negative values (listed if any): 0
+
+Piemonte aggregate: tipologia 101 per capita    609 euro
+Piemonte aggregate: IMU + addizionale IRPEF pc  394 euro
+Piemonte aggregate: TARI per capita             199 euro
+Piemonte aggregate: transfers+equalisation share 24.3 %
+Piemonte aggregate: current spending per capita  975 euro
+Piemonte aggregate: capital spending per capita  375 euro
+
+saved cleaned files in I:\Il mio Drive\Gio_site\_build\piemonte_bilanci\output
+piemonte_comuni_2024.geojson              1,213,552 bytes
+piemonte_province_2024.geojson              326,849 bytes
+piemonte_comuni_2024_indicators.csv          97,658 bytes
+
+Tax year 2022: comuni matched 1178 of 1178
+
+Tax year 2023: comuni matched 1178 of 1178
+
+Benchmark (BDAP accertamenti 2024, cat. 1010116, comuni with categories)
+                                    benchmark      bdap_2024  benchmark_value  ratio  corr_across_comuni
+Addizionale comunale dovuta, tax returns 2022 508,638,976.58        490245414   1.04                1.00
+Addizionale comunale dovuta, tax returns 2023 508,638,976.58        528807553   0.96                1.00
+
+Reconciliation table
+ step                                                  passo  n_righe_ent  n_enti       entrate_acc  spese_imp_missioni  spese_imp_titoli
+    0 Raw file, all entities (comuni, unioni, consorzi, ...)        23057    1332 27,198,892,540.31   26,746,697,962.22 26,746,697,962.22
+    1                         Only comuni (flag_comune == 1)        21144    1179  7,328,840,292.26    7,163,772,360.16  7,163,772,360.16
+    2      Comuni matched to ISTAT boundaries and population        21144    1179  7,328,840,292.26    7,163,772,360.16  7,163,772,360.16

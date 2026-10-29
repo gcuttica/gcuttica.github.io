@@ -8,4 +8,4 @@ listing:
   fields: [title, subtitle, date]
 ---
 
-*This page is under construction — check back soon! It will include personal notes and lecture decks from my PhD.*
+*Notes and teaching material on public finance, applied econometrics and data management.*

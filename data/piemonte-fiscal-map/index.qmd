@@ -1,0 +1,438 @@
+---
+title: "Municipal finances in Piedmont"
+subtitle: "An interactive map of the 2024 budget outturn of 1,180 municipalities"
+description: "Taxes, transfers, current and capital spending, and debt repayment per resident, for every municipality in Piedmont (OpenBDAP, rendiconto 2024)."
+date: 2026-10-29
+categories: [Municipal data, Fiscal & Tax data]
+resources:
+  - piemonte_comuni_2024.geojson
+  - piemonte_province_2024.geojson
+  - piemonte_comuni_2024_indicators.csv
+---
+
+```{=html}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<style>
+  /* language switch: only the text of the chosen language is shown */
+  /* Italian is the default: English is hidden until the reader chooses ENG */
+  body:not(.pfm-lang-en) .pfm-en, body.pfm-lang-en .pfm-it { display: none; }
+  .pfm-langbar { display: flex; justify-content: flex-end; margin-bottom: 0.5rem; }
+  .pfm-langbar .btn { font-size: 0.8rem; padding: 0.15rem 0.6rem; }
+  .pfm-controls { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 0.5rem 0; }
+  .pfm-controls label { font-size: 0.85rem; color: #555; display: block; margin-bottom: 0.15rem; }
+  .pfm-controls select { min-width: 16rem; }
+  #pfm-note { font-size: 0.9rem; color: #555; margin-bottom: 0.5rem; min-height: 2.6em; }
+  #pfm-note .pfm-official { font-size: 0.82rem; color: #18bc9c; margin-bottom: 0.25rem; }
+  #pfm-map { height: 620px; background: #ffffff; border: 1px solid #ddd; }
+  .pfm-legend { font-size: 0.78rem; line-height: 1.35; margin-top: 0.5rem; }
+  .pfm-legend .ttl { font-weight: 600; margin-bottom: 3px; }
+  .pfm-legend .items { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+  .pfm-legend .sw { display: inline-block; width: 14px; height: 11px; margin-right: 5px;
+                    vertical-align: middle; border: 1px solid #bbb; }
+  .pfm-legend .hint { color: #777; margin-top: 3px; }
+  .pfm-credit { font-size: 0.78rem; color: #777; margin-top: 0.4rem; }
+  .leaflet-tooltip.pfm-tip { font-size: 0.82rem; }
+</style>
+
+<div class="pfm-langbar">
+  <div class="btn-group" role="group" aria-label="Lingua / Language">
+    <button type="button" class="btn btn-outline-secondary" id="pfm-btn-it">ITA</button>
+    <button type="button" class="btn btn-outline-secondary" id="pfm-btn-en">ENG</button>
+  </div>
+</div>
+```
+
+::: {.pfm-it}
+Il Piemonte ha 1.180 comuni. La maggior parte è molto piccola: metà dei comuni ha meno di 1.000 residenti.
+Questa mappa mostra come ogni comune ha raccolto e speso le sue risorse nel 2024.
+Scegli una variabile e, se vuoi, una provincia. Passa il mouse su un comune per leggere il nome e il valore.
+:::
+
+::: {.pfm-en}
+Piedmont has 1,180 municipalities (*comuni*). Most of them are very small: half have fewer than 1,000 residents.
+This map shows how each municipality raised and spent its money in 2024.
+Choose a variable and, if you want, a province. Move the mouse over a municipality to read its name and value.
+:::
+
+```{=html}
+<div class="pfm-controls">
+  <div>
+    <label for="pfm-var" data-i18n="variable">Variabile</label>
+    <select id="pfm-var" class="form-select form-select-sm"></select>
+  </div>
+  <div>
+    <label for="pfm-prov" data-i18n="area">Area</label>
+    <select id="pfm-prov" class="form-select form-select-sm">
+      <option value="ALL" data-i18n="whole">Tutta la regione</option>
+      <option value="AL">Alessandria</option>
+      <option value="AT">Asti</option>
+      <option value="BI">Biella</option>
+      <option value="CN">Cuneo</option>
+      <option value="NO">Novara</option>
+      <option value="TO">Torino</option>
+      <option value="VB">Verbano-Cusio-Ossola</option>
+      <option value="VC">Vercelli</option>
+    </select>
+  </div>
+</div>
+<div id="pfm-note"></div>
+<div id="pfm-map"></div>
+<div id="pfm-legend" class="pfm-legend"></div>
+<div class="pfm-credit pfm-it">
+  Fonte: OpenBDAP – Ragioneria Generale dello Stato (MEF), bilanci armonizzati, rendiconto 2024
+  (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>);
+  ISTAT, popolazione residente al 1° gennaio 2024 e confini comunali al 1° gennaio 2024
+  (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>);
+  MEF – Dipartimento delle Finanze, aliquote dell'addizionale comunale IRPEF 2024 (usate come controllo).
+  Elaborazione dell'autore: le variabili sono calcolate dai dati originali, i confini sono semplificati.
+  · <a href="piemonte_comuni_2024_indicators.csv" download>Scarica i dati (CSV)</a>
+</div>
+<div class="pfm-credit pfm-en">
+  Source: OpenBDAP – Ragioneria Generale dello Stato (MEF), harmonised budgets, rendiconto 2024
+  (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>);
+  ISTAT, resident population at 1 January 2024 and municipal boundaries at 1 January 2024
+  (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>);
+  MEF – Dipartimento delle Finanze, rates of the addizionale comunale IRPEF 2024 (used as a check).
+  Author's elaboration: variables are computed from the original data, boundaries are simplified.
+  · <a href="piemonte_comuni_2024_indicators.csv" download>Download the data (CSV)</a>
+</div>
+
+<script>
+(function () {
+  // ---- texts in the two languages (Italian is the default) ---------------
+  var T = {
+    it: {
+      variable: "Variabile", area: "Area", whole: "Tutta la regione",
+      official: "Voce ufficiale: ", per_res: "residenti", nodata: "nessun dato",
+      no_budget: "nessun dato di bilancio 2024 in OpenBDAP", not_shown: "non mostrato: ",
+      residents: "Residenti al 1° gennaio 2024: ",
+      below: "meno di ", more: " e oltre", hint: "Ogni classe contiene circa 1/7 dei comuni.",
+      title: "Le finanze dei comuni del Piemonte",
+      subtitle: "Una mappa interattiva del rendiconto 2024 dei 1.180 comuni",
+      description: "Tasse, trasferimenti, spesa corrente e in conto capitale, rimborso dei prestiti per residente, per ogni comune del Piemonte (OpenBDAP, rendiconto 2024).",
+      notes: {
+        "no 2024 budget data in OpenBDAP": "nessun dato di bilancio 2024 in OpenBDAP",
+        "the revenue-by-category schedule is missing in OpenBDAP": "in OpenBDAP manca il prospetto delle entrate per categoria",
+        "IMU or the IRPEF surcharge is booked under another category in OpenBDAP": "in OpenBDAP l'IMU o l'addizionale IRPEF sono registrate in un'altra categoria"
+      },
+      locale: "it-IT"
+    },
+    en: {
+      variable: "Variable", area: "Area", whole: "Whole region",
+      official: "Official item: ", per_res: "residents", nodata: "no data",
+      no_budget: "no 2024 budget data in OpenBDAP", not_shown: "not shown: ",
+      residents: "Residents (1 Jan 2024): ",
+      below: "below ", more: " and more", hint: "Each class holds about 1/7 of the municipalities.",
+      title: null, subtitle: null, description: null,   // keep the English page title
+      notes: {}, locale: "en-GB"
+    }
+  };
+
+  // ---- the five variables -------------------------------------------------
+  // official = official item of the harmonised budget (D.Lgs. 118/2011), quoted
+  //            exactly: revenue from Allegato 13/2, spending from Allegato 14
+  var VARS = {
+    v_tax_pc: {
+      unit: "eur",
+      label: { it: "IMU + addizionale comunale IRPEF per residente (€)",
+               en: "IMU + municipal income-tax surcharge per resident (€)" },
+      official: "Entrate – Titolo 1, Tipologia 101 «Imposte tasse e proventi assimilati»: Categoria 1010106 «Imposta municipale propria» + Categoria 1010116 «Addizionale comunale IRPEF» – accertamenti ÷ ",
+      note: {
+        it: "Contiene l'imposta municipale propria (IMU) e l'addizionale comunale all'IRPEF. L'IMU è registrata al netto della quota trattenuta dallo Stato per alimentare il Fondo di solidarietà comunale. Nel 2024 87 comuni hanno l'aliquota dell'addizionale allo 0%. La TARI non è inclusa: per legge deve coprire tutto il costo del servizio rifiuti, quindi è il prezzo di un servizio, non una scelta fiscale del comune.",
+        en: "Inside: the municipal property tax (IMU) and the municipal surcharge on personal income tax. IMU is recorded net of the share kept by the State to fund the equalisation fund. 87 municipalities have a 0% surcharge rate in 2024. The waste tax TARI is not included: by law it must cover the full cost of waste collection, so it is the price of a service rather than a tax choice."
+      }
+    },
+    v_transfer_share: {
+      unit: "pct",
+      label: { it: "Trasferimenti e perequazione, % delle entrate correnti",
+               en: "Transfers and equalisation, % of current revenue" },
+      official: "Entrate – (Titolo 2 «Trasferimenti correnti» + Titolo 1 Tipologia 301 «Fondi perequativi da Amministrazioni Centrali» + Tipologia 302 «Fondi perequativi dalla Regione o Provincia autonoma») ÷ (Titoli 1 + 2 + 3 «Entrate extratributarie») × 100 – accertamenti",
+      note: {
+        it: "Contiene i trasferimenti correnti dallo Stato, dalla Regione e da altri enti, più il Fondo di solidarietà comunale (il fondo di perequazione dello Stato, registrato nel Titolo 1 anche se è un trasferimento). Un valore alto significa che il comune dipende di più da altri livelli di governo per finanziare i suoi servizi.",
+        en: "Inside: current transfers from the State, the Region and other bodies, plus the Fondo di solidarietà comunale (the State equalisation fund, recorded in Titolo 1 although it is a transfer). A high value means the municipality depends more on other governments to pay for its services."
+      }
+    },
+    v_curr_spend_pc: {
+      unit: "eur",
+      label: { it: "Spesa corrente per residente (€)", en: "Current spending per resident (€)" },
+      official: "Spese – Titolo 1 «Spese correnti» – impegni ÷ ",
+      note: {
+        it: "Contiene (macroaggregati, Piemonte): «Acquisto di beni e servizi» 54% (compresi i contratti per la raccolta dei rifiuti), «Redditi da lavoro dipendente» 25%, «Trasferimenti correnti» 13% (spesso a unioni e consorzi che gestiscono i servizi), «Interessi passivi» 4%.",
+        en: "Inside (macroaggregati, Piedmont): «Acquisto di beni e servizi» 54% (including waste-collection contracts), «Redditi da lavoro dipendente» 25%, «Trasferimenti correnti» 13% (often to unions and consortia that run services), «Interessi passivi» 4%."
+      }
+    },
+    v_cap_spend_pc: {
+      unit: "eur",
+      label: { it: "Spesa in conto capitale per residente (€)", en: "Capital spending per resident (€)" },
+      official: "Spese – Titolo 2 «Spese in conto capitale» – impegni ÷ ",
+      note: {
+        it: "Contiene soprattutto «Investimenti fissi lordi e acquisto di terreni» (85% in Piemonte: opere pubbliche, edifici, strade, attrezzature). Conta solo la spesa esigibile nel 2024; i lavori esigibili negli anni successivi sono nel fondo pluriennale vincolato (FPV). Una sola grande opera può portare un piccolo comune in cima alla classifica in un solo anno.",
+        en: "Inside: mostly «Investimenti fissi lordi e acquisto di terreni» (85% in Piedmont: public works, buildings, roads, equipment). Only spending due in 2024 is counted; works due in later years are in the multi-year fund (FPV). One large project can put a small municipality at the top in a single year."
+      }
+    },
+    v_debt_repay_pc: {
+      unit: "eur",
+      label: { it: "Rimborso dei prestiti per residente (€)", en: "Debt repayment per resident (€)" },
+      official: "Spese – Titolo 4 «Rimborso Prestiti» – impegni ÷ ",
+      note: {
+        it: "Contiene il rimborso della quota capitale dei prestiti, soprattutto «Rimborso mutui e altri finanziamenti a medio lungo termine» (85% in Piemonte). Gli interessi non sono inclusi: sono spesa corrente («Interessi passivi»).",
+        en: "Inside: repayment of the principal of loans, mostly «Rimborso mutui e altri finanziamenti a medio lungo termine» (85% in Piedmont). Interest is not included: it is current spending («Interessi passivi»)."
+      }
+    }
+  };
+  var NCLASS = 7;
+  // sequential palette, light (low) to dark (high)
+  var COLORS = ["#f0f9e8", "#ccebc5", "#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#08589e"];
+  var NODATA = "#d9d9d9";
+
+  // ---- language ----------------------------------------------------------
+  var lang = "it";
+  try { if (localStorage.getItem("pfm-lang") === "en") { lang = "en"; } } catch (e) {}
+  var fmtEur, fmtPct, fmtPop;
+  function setFormats() {
+    fmtEur = new Intl.NumberFormat(T[lang].locale, { maximumFractionDigits: 0 });
+    fmtPct = new Intl.NumberFormat(T[lang].locale, { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+    fmtPop = new Intl.NumberFormat(T[lang].locale);
+  }
+  function fmt(v, unit) {
+    if (v === null || v === undefined || isNaN(v)) return T[lang].nodata;
+    return unit === "pct" ? fmtPct.format(v) + "%" : "€ " + fmtEur.format(v);
+  }
+  // page title block: keep the English originals, swap to Italian when needed
+  var titleEl = document.querySelector("h1.title"), subEl = document.querySelector("p.subtitle"),
+      descEl = document.querySelector(".quarto-title-block .description p, .quarto-title-block .description");
+  var pubEl = document.querySelector(".quarto-title-meta-heading"),
+      dateEl = document.querySelector(".quarto-title-meta-contents .date");
+  var orig = { title: titleEl && titleEl.textContent, subtitle: subEl && subEl.textContent,
+               description: descEl && descEl.textContent, published: pubEl && pubEl.textContent,
+               date: dateEl && dateEl.textContent, tab: document.title };
+  T.it.published = "Pubblicato";
+  T.it.date = "29 ottobre 2026";
+  T.it.tab = "Le finanze dei comuni del Piemonte – Giovanni Cuttica";
+
+  // ---- controls -----------------------------------------------------------
+  var selVar = document.getElementById("pfm-var");
+  var selProv = document.getElementById("pfm-prov");
+  Object.keys(VARS).forEach(function (k) {
+    var o = document.createElement("option");
+    o.value = k; selVar.appendChild(o);
+  });
+
+  // ---- map (no background tiles: only the municipalities) -----------------
+  var map = L.map("pfm-map", { zoomSnap: 0.25, scrollWheelZoom: false, attributionControl: false });
+  var comuni, province, breaks = {}, provBounds = {}, regionBounds;
+
+  // regional class breaks (quantiles): the same colour means the same value in every province
+  function quantileBreaks(values) {
+    var v = values.filter(function (x) { return x !== null && !isNaN(x); }).sort(function (a, b) { return a - b; });
+    var b = [];
+    for (var i = 1; i < NCLASS; i++) { b.push(v[Math.floor(i * v.length / NCLASS)]); }
+    return b;   // NCLASS-1 inner cut points
+  }
+  function colorFor(v, b) {
+    if (v === null || v === undefined || isNaN(v)) return NODATA;
+    for (var i = 0; i < b.length; i++) { if (v < b[i]) return COLORS[i]; }
+    return COLORS[COLORS.length - 1];
+  }
+
+  function styleFeature(f) {
+    var k = selVar.value, p = selProv.value;
+    var inArea = (p === "ALL" || f.properties.sigla === p);
+    return {
+      fillColor: colorFor(f.properties[k], breaks[k]),
+      fillOpacity: inArea ? 0.9 : 0.15,
+      color: "#ffffff", weight: inArea ? 0.4 : 0.2, opacity: 1
+    };
+  }
+
+  function tipText(f) {
+    var k = selVar.value, pr = f.properties, t = T[lang];
+    var val = !pr.has_data ? t.no_budget
+            : (pr[k] === null && pr.note_tax) ? t.not_shown + (t.notes[pr.note_tax] || pr.note_tax)
+            : fmt(pr[k], VARS[k].unit);
+    return "<b>" + pr.name + "</b> (" + pr.sigla + ")<br>" +
+           VARS[k].label[lang] + ": <b>" + val + "</b><br>" +
+           t.residents + fmtPop.format(pr.pop);
+  }
+
+  // ---- legend (below the map, so it never covers municipalities) ----------
+  function updateLegend() {
+    var k = selVar.value, b = breaks[k], u = VARS[k].unit, t = T[lang];
+    var h = "<div class='ttl'>" + VARS[k].label[lang] + "</div><div class='items'>";
+    for (var i = 0; i < NCLASS; i++) {
+      var lo = i === 0 ? null : b[i - 1], hi = i === NCLASS - 1 ? null : b[i];
+      var txt = lo === null ? t.below + fmt(hi, u) : (hi === null ? fmt(lo, u) + t.more : fmt(lo, u) + " – " + fmt(hi, u));
+      h += "<span><span class='sw' style='background:" + COLORS[i] + "'></span>" + txt + "</span>";
+    }
+    h += "<span><span class='sw' style='background:" + NODATA + "'></span>" + t.nodata + "</span></div>";
+    h += "<div class='hint'>" + t.hint + "</div>";
+    document.getElementById("pfm-legend").innerHTML = h;
+  }
+
+  // ---- one single tooltip for the whole map (never more than one open) ----
+  var hoverTip = L.tooltip({ className: "pfm-tip", direction: "top", offset: [0, -10] });
+  var hovered = null, outline = null;
+  function unhover() {
+    if (outline) { map.removeLayer(outline); outline = null; }
+    hovered = null;
+    map.closeTooltip(hoverTip);
+  }
+
+  function refresh() {
+    unhover();
+    if (comuni) { comuni.setStyle(styleFeature); updateLegend(); }
+    var v = VARS[selVar.value], t = T[lang];
+    var nt = document.getElementById("pfm-note");
+    nt.innerHTML = "";
+    var off = document.createElement("div");
+    off.className = "pfm-official";
+    off.textContent = t.official + v.official + (v.unit === "pct" ? "" : t.per_res);
+    var txt = document.createElement("div");
+    txt.textContent = v.note[lang];
+    nt.appendChild(off); nt.appendChild(txt);
+  }
+
+  function applyLanguage(l) {
+    lang = l;
+    try { localStorage.setItem("pfm-lang", l); } catch (e) {}
+    document.body.classList.remove("pfm-lang-it", "pfm-lang-en");
+    document.body.classList.add("pfm-lang-" + l);
+    document.documentElement.lang = l;
+    document.getElementById("pfm-btn-it").classList.toggle("active", l === "it");
+    document.getElementById("pfm-btn-en").classList.toggle("active", l === "en");
+    setFormats();
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      el.textContent = T[l][el.getAttribute("data-i18n")];
+    });
+    Array.prototype.forEach.call(selVar.options, function (o) { o.textContent = VARS[o.value].label[l]; });
+    if (titleEl) { titleEl.textContent = T[l].title || orig.title; }
+    if (subEl) { subEl.textContent = T[l].subtitle || orig.subtitle; }
+    if (descEl) { descEl.textContent = T[l].description || orig.description; }
+    if (pubEl) { pubEl.textContent = T[l].published || orig.published; }
+    if (dateEl) { dateEl.textContent = T[l].date || orig.date; }
+    document.title = T[l].tab || orig.tab;
+    refresh();
+  }
+  document.getElementById("pfm-btn-it").addEventListener("click", function () { applyLanguage("it"); });
+  document.getElementById("pfm-btn-en").addEventListener("click", function () { applyLanguage("en"); });
+  applyLanguage(lang);
+
+  function zoomToArea() {
+    var p = selProv.value;
+    map.fitBounds(p === "ALL" ? regionBounds : provBounds[p], { padding: [10, 10] });
+  }
+
+  // ---- load the data ------------------------------------------------------
+  Promise.all([
+    fetch("piemonte_comuni_2024.geojson").then(function (r) { return r.json(); }),
+    fetch("piemonte_province_2024.geojson").then(function (r) { return r.json(); })
+  ]).then(function (res) {
+    var gc = res[0], gp = res[1];
+    Object.keys(VARS).forEach(function (k) {
+      breaks[k] = quantileBreaks(gc.features.map(function (f) { return f.properties[k]; }));
+    });
+    comuni = L.geoJSON(gc, {
+      style: styleFeature,
+      onEachFeature: function (f, layer) {
+        layer.on("mouseover", function (e) {
+          if (outline) { map.removeLayer(outline); }
+          hovered = layer;
+          // highlight drawn as a separate outline on top; it ignores the mouse
+          outline = L.geoJSON(f, { style: { fill: false, color: "#333", weight: 2.5 },
+                                   interactive: false }).addTo(map);
+          hoverTip.setContent(tipText(f)).setLatLng(e.latlng);
+          map.openTooltip(hoverTip);
+        });
+        layer.on("mousemove", function (e) { hoverTip.setLatLng(e.latlng); });
+        layer.on("mouseout", function () { if (hovered === layer) { unhover(); } });
+      }
+    }).addTo(map);
+    province = L.geoJSON(gp, {
+      style: { fill: false, color: "#444", weight: 1.2, opacity: 0.9 },
+      interactive: false
+    }).addTo(map);
+    province.eachLayer(function (l) { provBounds[l.feature.properties.sigla] = l.getBounds(); });
+    regionBounds = province.getBounds();
+    // pointer leaves the map box: close the tooltip and the highlight
+    map.getContainer().addEventListener("mouseleave", unhover);
+    refresh();
+    zoomToArea();
+  });
+
+  selVar.addEventListener("change", refresh);
+  selProv.addEventListener("change", function () { refresh(); zoomToArea(); });
+})();
+</script>
+```
+
+::: {.pfm-it}
+## Come leggere la mappa
+
+- **Colori.** I colori dividono i comuni in sette gruppi della stessa dimensione (quantili), calcolati su tutto il Piemonte. Il gruppo più scuro contiene il settimo dei comuni con i valori più alti. La scala non cambia quando si fa lo zoom su una provincia: lo stesso colore indica lo stesso valore ovunque.
+- **Per residente.** Gli importi sono divisi per la popolazione residente al 1° gennaio 2024. I totali in euro mostrerebbero soprattutto dove vive la gente, e Torino sarebbe scura in ogni mappa.
+- **Piccoli comuni.** Molti comuni hanno poche centinaia di residenti. In questi comuni un solo grande pagamento, oppure una zona turistica con molte seconde case (che pagano l'IMU), produce un valore per residente molto alto. I valori estremi sono reali, ma non sono tipici.
+- **Un solo anno.** La spesa in conto capitale e il rimborso dei prestiti cambiano molto da un anno all'altro. Un comune scuro può avere semplicemente concluso una grande opera nel 2024.
+
+## Le variabili
+
+Tutti gli importi vengono dal *rendiconto* 2024 che ogni comune invia alla Banca dati delle amministrazioni pubbliche (BDAP). Le entrate sono misurate come *accertamenti* (entrate di competenza del 2024) e le spese come *impegni* (spese di competenza del 2024).
+
+Le voci tra «virgolette» sono i nomi ufficiali delle voci di bilancio, come scritti nella classificazione dei bilanci armonizzati (D.Lgs. 118/2011: Allegato 13/2 per le entrate, Allegato 14 per le spese).
+
+| Variabile | Voce ufficiale | Cosa contiene (Piemonte, 2024) |
+|---|---|---|
+| IMU + addizionale comunale IRPEF per residente | Entrate, Titolo 1 «Entrate correnti di natura tributaria, contributiva e perequativa», Tipologia 101 «Imposte tasse e proventi assimilati»: Categoria 1010106 «Imposta municipale propria» + Categoria 1010116 «Addizionale comunale IRPEF» ÷ residenti | «Imposta municipale propria» (IMU) 1.167 milioni di euro; «Addizionale comunale IRPEF» 509 milioni |
+| Trasferimenti e perequazione | (Titolo 2 «Trasferimenti correnti» + Titolo 1, Tipologia 301 «Fondi perequativi da Amministrazioni Centrali» + Tipologia 302 «Fondi perequativi dalla Regione o Provincia autonoma») ÷ (Titoli 1 + 2 + 3) × 100 | Trasferimenti dallo Stato (435 milioni) e da enti locali, compresa la Regione (156 milioni); Fondo di solidarietà comunale (553 milioni) |
+| Spesa corrente per residente | Spese, Titolo 1 «Spese correnti» ÷ residenti | «Acquisto di beni e servizi» 54%; «Redditi da lavoro dipendente» 25%; «Trasferimenti correnti» 13%; «Interessi passivi» 4% |
+| Spesa in conto capitale per residente | Spese, Titolo 2 «Spese in conto capitale» ÷ residenti | «Investimenti fissi lordi e acquisto di terreni» 85%; «Contributi agli investimenti» 11% |
+| Rimborso dei prestiti per residente | Spese, Titolo 4 «Rimborso Prestiti» ÷ residenti | «Rimborso mutui e altri finanziamenti a medio lungo termine» 85%; «Rimborso di titoli obbligazionari» 15% |
+
+**Perché la TARI non è nella mappa.** L'altra grande voce della Tipologia 101 è la tassa sui rifiuti, la TARI (846 milioni di euro nel 2024, registrata come «Tassa smaltimento rifiuti solidi urbani» o come «Tributo comunale sui rifiuti e sui servizi»). Per legge la TARI deve coprire tutto il costo del servizio rifiuti: misura quindi il costo di un servizio, non una scelta fiscale del comune. Inoltre 30 comuni (29 in provincia di Alessandria) sostituiscono la TARI con una tariffa pagata direttamente al gestore dei rifiuti (*tariffa corrispettiva*), che non compare tra le imposte del comune. Sommare la TARI mescolerebbe quindi scelte fiscali e costi dei servizi. Il file dei dati riporta la TARI per residente in una colonna separata.
+
+Per il Piemonte nel suo insieme (somma di tutti i comuni), IMU e addizionale IRPEF valgono 394 euro per residente (la TARI aggiunge 199 euro), la spesa corrente 975 euro e la spesa in conto capitale 375 euro. Trasferimenti e perequazione sono il 24,3% delle entrate correnti.
+
+## Note sui dati
+
+- I dati coprono 1.179 dei 1.180 comuni. Cassinasco (Asti) non ha un *rendiconto* 2024 in OpenBDAP, quindi nella mappa è grigio.
+- Per la variabile IMU + addizionale sono grigi altri 31 comuni. Mongrando (Biella) non ha inviato il prospetto delle entrate per categoria. In 30 piccoli comuni l'IMU o l'addizionale sono registrate in un'altra categoria (per esempio nella vecchia «Imposta comunale sugli immobili (ICI)», abolita nel 2012). Abbiamo controllato l'addizionale con le aliquote 2024 pubblicate dal Dipartimento delle Finanze: uno zero è mostrato solo quando l'aliquota è davvero dello 0%.
+- I totali sono stati controllati su tre tabelle diverse della stessa banca dati (entrate per tipologia, entrate per titolo, quadro generale riassuntivo): coincidono al centesimo. Anche la spesa per missione e la spesa per titolo coincidono per ogni comune.
+- Lo script di pulizia e l'estratto completo (tutti i titoli e le tipologie di entrata, tutte le missioni e i titoli di spesa) sono conservati con il codice sorgente di questo sito.
+:::
+
+::: {.pfm-en}
+## How to read the map
+
+- **Colours.** Colours split the municipalities into seven groups of equal size (quantiles), using all of Piedmont. The darkest group holds the seventh of municipalities with the highest values. The scale does not change when you zoom on a province, so the same colour means the same value everywhere.
+- **Per resident.** Amounts are divided by the resident population at 1 January 2024. Totals in euro would mostly show where people live, and Torino would be dark on every map.
+- **Small municipalities.** Many municipalities have a few hundred residents. In these places one large payment, or a tourist area with many second homes (which pay IMU, the property tax), gives a very high value per resident. The extreme values are real, but they are not typical.
+- **One year only.** Capital spending and debt repayment move a lot from one year to the next. A dark municipality may simply have finished a large project in 2024.
+
+## The variables
+
+All amounts come from the 2024 *rendiconto* (budget outturn) that each municipality sends to the national database of public administrations (BDAP). Revenue is measured as *accertamenti* (revenue accrued in 2024) and spending as *impegni* (spending committed in 2024).
+
+The labels in «quotes» are the official names of the budget items, as written in the harmonised budget classification (D.Lgs. 118/2011: Allegato 13/2 for revenue, Allegato 14 for spending).
+
+| Variable | Official item | What is inside (Piedmont, 2024) |
+|---|---|---|
+| IMU + municipal income-tax surcharge per resident | Entrate, Titolo 1 «Entrate correnti di natura tributaria, contributiva e perequativa», Tipologia 101 «Imposte tasse e proventi assimilati»: Categoria 1010106 «Imposta municipale propria» + Categoria 1010116 «Addizionale comunale IRPEF» ÷ residents | «Imposta municipale propria» (IMU) €1,167 million; «Addizionale comunale IRPEF» €509 million |
+| Transfers and equalisation | (Titolo 2 «Trasferimenti correnti» + Titolo 1, Tipologia 301 «Fondi perequativi da Amministrazioni Centrali» + Tipologia 302 «Fondi perequativi dalla Regione o Provincia autonoma») ÷ (Titoli 1 + 2 + 3) × 100 | Transfers from the State (€435 million) and from local bodies, including the Region (€156 million); the Fondo di solidarietà comunale (€553 million) |
+| Current spending per resident | Spese, Titolo 1 «Spese correnti» ÷ residents | «Acquisto di beni e servizi» 54%; «Redditi da lavoro dipendente» 25%; «Trasferimenti correnti» 13%; «Interessi passivi» 4% |
+| Capital spending per resident | Spese, Titolo 2 «Spese in conto capitale» ÷ residents | «Investimenti fissi lordi e acquisto di terreni» 85%; «Contributi agli investimenti» 11% |
+| Debt repayment per resident | Spese, Titolo 4 «Rimborso Prestiti» ÷ residents | «Rimborso mutui e altri finanziamenti a medio lungo termine» 85%; «Rimborso di titoli obbligazionari» 15% |
+
+**Why TARI is not on the map.** The other big item of Tipologia 101 is the waste tax TARI (€846 million in 2024, recorded under «Tassa smaltimento rifiuti solidi urbani» or «Tributo comunale sui rifiuti e sui servizi»). By law, TARI must cover the full cost of the waste service, so it measures the cost of a service, not a tax choice of the municipality. Moreover, 30 municipalities (29 in the province of Alessandria) replace TARI with a fee paid directly to the waste operator (*tariffa corrispettiva*), which does not appear among the municipal taxes at all. Adding TARI would therefore mix tax choices with service costs. The data file keeps TARI per resident in a separate column.
+
+For Piedmont as a whole (sum of all municipalities), IMU and the income-tax surcharge together are €394 per resident (TARI adds €199), current spending is €975 and capital spending €375. Transfers and equalisation are 24.3% of current revenue.
+
+## Data notes
+
+- The data cover 1,179 of the 1,180 municipalities. Cassinasco (Asti) has no 2024 *rendiconto* in OpenBDAP, so it is grey on the map.
+- For the IMU + surcharge variable, 31 more municipalities are grey. Mongrando (Biella) did not file the revenue-by-category table. In 30 small municipalities IMU or the surcharge is booked under another category (for example under the old property tax «Imposta comunale sugli immobili (ICI)», abolished in 2012). We checked the surcharge against the 2024 rates published by the Ministry of Finance (Dipartimento delle Finanze): a zero is shown only when the rate is really 0%.
+- The totals were checked across three different tables of the same database (revenue by type, revenue by title, general summary): they match to the cent. Spending by mission and spending by title also match for every municipality.
+- The cleaning script and the full extract (all titles and types of revenue, all missions and titles of spending) are kept with the source of this website.
+:::

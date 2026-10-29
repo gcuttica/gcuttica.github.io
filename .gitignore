@@ -1,2 +1,8 @@
 /.quarto/
 **/*.quarto_ipynb
+
+# raw downloads for the Piedmont map (re-downloaded by the build script)
+_build/piemonte_bilanci/raw/
+
+# local Claude Code settings: never publish
+.claude/

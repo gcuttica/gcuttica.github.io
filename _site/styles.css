@@ -19,3 +19,9 @@ details[open] summary {
   font-style: italic;
   color: #999999;
 }
+
+/* Musings: re-published articles shown as a live mirror of the original page */
+.mus-source { font-size: 0.9rem; color: #555; margin-bottom: 0.8rem; }
+.mus-source .btn { font-size: 0.8rem; padding: 0.15rem 0.6rem; margin-left: 0.4rem; }
+.mus-mirror { width: 100%; height: 85vh; border: 1px solid #ddd; border-radius: 4px; }
+.mus-fallback { font-size: 0.8rem; color: #777; margin-top: 0.4rem; }

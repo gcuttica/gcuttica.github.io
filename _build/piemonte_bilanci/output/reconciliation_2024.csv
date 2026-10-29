@@ -1,0 +1,4 @@
+step,passo,n_righe_ent,n_enti,entrate_acc,spese_imp_missioni,spese_imp_titoli
+0,"Raw file, all entities (comuni, unioni, consorzi, ...)",23057,1332,27198892540.309998,26746697962.22,26746697962.22
+1,Only comuni (flag_comune == 1),21144,1179,7328840292.259999,7163772360.16,7163772360.16
+2,Comuni matched to ISTAT boundaries and population,21144,1179,7328840292.26,7163772360.16,7163772360.16

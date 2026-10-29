@@ -1,0 +1,18 @@
+---
+title: "Territori che cambiano forma"
+subtitle: "Compagnia di San Paolo Open Data · Panorami"
+description: "What the ISTAT 2025 projections say about population ageing in North-West Italy, and why much of it is already written in today's age structure."
+date: 2026-07-20
+---
+
+```{=html}
+<div class="mus-source">
+  Originally published on <a href="https://opendata.compagniadisanpaolo.it/editorial/territori-cambiano-forma" target="_blank" rel="noopener">Compagnia di San Paolo Open Data</a>
+  on 20 July 2026 · Giovanni Cuttica
+  <a class="btn btn-outline-secondary" href="https://opendata.compagniadisanpaolo.it/editorial/territori-cambiano-forma" target="_blank" rel="noopener">Read on Compagnia di San Paolo Open Data</a>
+</div>
+<iframe class="mus-mirror" src="https://opendata.compagniadisanpaolo.it/editorial/territori-cambiano-forma" loading="lazy"
+        title="Territori che cambiano forma – Compagnia di San Paolo Open Data"></iframe>
+<p class="mus-fallback">If the article does not appear above, read it on
+  <a href="https://opendata.compagniadisanpaolo.it/editorial/territori-cambiano-forma" target="_blank" rel="noopener">Compagnia di San Paolo Open Data</a>.</p>
+```
