@@ -124,26 +124,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#the-map-of-municipal-revenue" id="toc-the-map-of-municipal-revenue" class="nav-link active" data-scroll-target="#the-map-of-municipal-revenue">1. The map of municipal revenue</a>
-  <ul class="collapse">
-  <li><a href="#the-main-municipal-taxes" id="toc-the-main-municipal-taxes" class="nav-link" data-scroll-target="#the-main-municipal-taxes">The main municipal taxes</a></li>
-  <li><a href="#the-equalisation-fund-fsc" id="toc-the-equalisation-fund-fsc" class="nav-link" data-scroll-target="#the-equalisation-fund-fsc">The equalisation fund (FSC)</a></li>
-  </ul></li>
-  <li><a href="#the-life-of-a-euro-competenza-cassa-residui" id="toc-the-life-of-a-euro-competenza-cassa-residui" class="nav-link" data-scroll-target="#the-life-of-a-euro-competenza-cassa-residui">2. The life of a euro: competenza, cassa, residui</a></li>
-  <li><a href="#a-worked-example-the-risultato-di-amministrazione" id="toc-a-worked-example-the-risultato-di-amministrazione" class="nav-link" data-scroll-target="#a-worked-example-the-risultato-di-amministrazione">3. A worked example: the risultato di amministrazione</a></li>
-  <li><a href="#three-documents-and-a-calendar" id="toc-three-documents-and-a-calendar" class="nav-link" data-scroll-target="#three-documents-and-a-calendar">4. Three documents and a calendar</a>
-  <ul class="collapse">
-  <li><a href="#two-meanings-of-consolidated" id="toc-two-meanings-of-consolidated" class="nav-link" data-scroll-target="#two-meanings-of-consolidated">Two meanings of “consolidated”</a></li>
-  </ul></li>
-  <li><a href="#who-decides-what" id="toc-who-decides-what" class="nav-link" data-scroll-target="#who-decides-what">5. Who decides what</a></li>
-  <li><a href="#official-sources" id="toc-official-sources" class="nav-link" data-scroll-target="#official-sources">Official sources</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -182,6 +164,344 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+  /* language switch. The other language is moved off-screen, not removed,
+     so that its diagrams are still drawn correctly when the page opens. */
+  body:not(.pfm-lang-en) .pfm-en, body.pfm-lang-en .pfm-it {
+    position: absolute !important; left: -10000px; top: 0; width: 850px;
+    height: 0; overflow: hidden; visibility: hidden;
+  }
+  .pfm-langbar { display: flex; justify-content: flex-end; margin-bottom: 0.5rem; }
+  .pfm-langbar .btn { font-size: 0.8rem; padding: 0.15rem 0.6rem; }
+</style>
+<div class="pfm-langbar">
+  <div class="btn-group" role="group" aria-label="Lingua / Language">
+    <button type="button" class="btn btn-outline-secondary" id="pfm-btn-it">ITA</button>
+    <button type="button" class="btn btn-outline-secondary" id="pfm-btn-en">ENG</button>
+  </div>
+</div>
+<div class="pfm-it">
+<p>Questi appunti spiegano come un comune italiano ottiene le sue risorse e come le registra nel bilancio. Seguono il sistema contabile armonizzato introdotto dal D.Lgs. 118/2011, che tutti i comuni usano dal 2016. I nomi ufficiali delle voci di bilancio sono riportati tra «virgolette». Gli importi per residente si riferiscono ai comuni del Piemonte nel rendiconto 2024; si possono esplorare comune per comune nella <a href="../data/piemonte-fiscal-map/index.html">mappa interattiva</a>.</p>
+<section id="la-mappa-delle-entrate-del-comune" class="level2">
+<h2 class="anchored" data-anchor-id="la-mappa-delle-entrate-del-comune">1. La mappa delle entrate del comune</h2>
+<p>Le entrate del comune sono classificate su tre livelli: <em>titolo</em> (la natura generale dell’entrata), <em>tipologia</em> e <em>categoria</em>. Lo schema mostra i pezzi principali.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  R["ENTRATE&lt;br/&gt;DEL COMUNE"] --&gt; T1["Titolo 1&lt;br/&gt;Tributi e perequazione"]
+  R --&gt; T2["Titolo 2&lt;br/&gt;Trasferimenti correnti"]
+  R --&gt; T3["Titolo 3&lt;br/&gt;Entrate extratributarie"]
+  R --&gt; T4["Titolo 4&lt;br/&gt;Entrate in conto capitale"]
+  R --&gt; TX["Titoli 5, 6, 7, 9&lt;br/&gt;prestiti, anticipazioni di cassa,&lt;br/&gt;partite di giro"]
+  T1 --&gt; A["Tipologia 101&lt;br/&gt;IMPOSTE PROPRIE"]
+  T1 --&gt; F["Tipologia 301&lt;br/&gt;Fondo di solidarietà comunale&lt;br/&gt;130 € per residente&lt;br/&gt;(finanziato in parte dall'IMU)"]
+  A --&gt; IMU["IMU, imposta sugli immobili&lt;br/&gt;274 €"]
+  A --&gt; ADD["Addizionale comunale IRPEF&lt;br/&gt;120 €"]
+  A --&gt; TARI["TARI, tassa sui rifiuti&lt;br/&gt;199 €"]
+  A --&gt; SOG["Imposta di soggiorno"]
+  T2 --&gt; TS["Dallo Stato 102 €&lt;br/&gt;dalla Regione e da altri enti"]
+  T3 --&gt; T3a["Proventi dei servizi 65 €&lt;br/&gt;proventi dei beni 79 €&lt;br/&gt;sanzioni 55 €"]
+  T4 --&gt; T4a["Contributi agli investimenti 217 €&lt;br/&gt;permessi di costruire 30 €&lt;br/&gt;alienazioni di beni"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Quattro punti da ricordare.</p>
+<ul>
+<li><strong>Le imposte proprie sono solo una parte del Titolo 1.</strong> Il Titolo 1 contiene anche il Fondo di solidarietà comunale (FSC), che è un trasferimento dello Stato, non un’imposta.</li>
+<li><strong>La TARI è il prezzo di un servizio.</strong> Per legge (L. 147/2013, c.&nbsp;654) la TARI deve coprire tutto il costo della raccolta dei rifiuti. Un comune con una TARI alta ha un servizio rifiuti costoso, non per forza un carico fiscale alto. Alcuni comuni sostituiscono la TARI con una tariffa pagata direttamente al gestore dei rifiuti (<em>tariffa corrispettiva</em>, c.&nbsp;668): in questo caso l’entrata non è nel Titolo 1, oppure non è proprio nel bilancio del comune.</li>
+<li><strong>Il canone unico si sposta.</strong> Dal 2021 le vecchie imposte sull’occupazione di suolo pubblico e sulla pubblicità (TOSAP, ICP) sono sostituite dal <em>canone unico</em> (L. 160/2019, c.&nbsp;816), registrato come entrata extratributaria nel Titolo 3. Dal 2027 torna nel Titolo 1 (nuovi codici di bilancio E.1.01.01.78 e 79). Le serie storiche delle “imposte proprie” hanno quindi due interruzioni, nel 2021 e nel 2027.</li>
+<li><strong>I Titoli 5, 6, 7 e 9 non sono risorse dell’anno.</strong> Sono nuovi prestiti, anticipazioni di cassa del tesoriere e partite di giro, come le ritenute sugli stipendi. Non vanno sommati nelle “entrate totali”.</li>
+</ul>
+<section id="i-principali-tributi-comunali" class="level3">
+<h3 class="anchored" data-anchor-id="i-principali-tributi-comunali">I principali tributi comunali</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tributo</th>
+<th>Cosa è tassato</th>
+<th>Chi decide cosa</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>IMU</strong>, «Imposta municipale propria» (L. 160/2019, c.&nbsp;738–783)</td>
+<td>Il possesso di fabbricati, aree fabbricabili e terreni agricoli. L’abitazione principale è esente, tranne le categorie di lusso (A/1, A/8, A/9).</td>
+<td>Aliquota di base 0,86% per la maggior parte dei fabbricati; il comune può andare da 0 fino all’1,06%.</td>
+<td>Sui fabbricati produttivi (gruppo D) lo 0,76% va allo Stato. I comuni registrano l’IMU <strong>al netto</strong> della quota trattenuta per il FSC (D.L. 16/2014, art. 6).</td>
+</tr>
+<tr class="even">
+<td><strong>Addizionale comunale IRPEF</strong> (D.Lgs. 360/1998, art. 1)</td>
+<td>Il reddito imponibile IRPEF dei residenti</td>
+<td>Il comune fissa l’aliquota, <strong>fino allo 0,8%</strong>, e può prevedere una soglia di esenzione.</td>
+<td>Alcuni comuni applicano lo 0%. Il bilancio registra una stima basata sulle dichiarazioni di due anni prima.</td>
+</tr>
+<tr class="odd">
+<td><strong>TARI</strong> (L. 147/2013, c.&nbsp;639–668)</td>
+<td>L’occupazione di locali e aree che possono produrre rifiuti urbani</td>
+<td>Le tariffe le fissa il comune</td>
+<td>Deve coprire il <strong>100% del costo</strong> del servizio rifiuti.</td>
+</tr>
+<tr class="even">
+<td><strong>Imposta di soggiorno</strong> (D.Lgs. 23/2011, art. 4)</td>
+<td>I pernottamenti in alberghi e altre strutture ricettive</td>
+<td>Solo capoluoghi di provincia, unioni di comuni e località turistiche o città d’arte; <strong>fino a 5 € per notte</strong></td>
+<td>Gettito vincolato a turismo, cultura e servizi locali.</td>
+</tr>
+<tr class="odd">
+<td><strong>Canone unico</strong> (L. 160/2019, c.&nbsp;816–836)</td>
+<td>L’uso di spazi pubblici, la pubblicità</td>
+<td>Il comune, mantenendo il gettito dei vecchi prelievi</td>
+<td>Fino al 2026 non è un tributo in bilancio (Titolo 3).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="il-fondo-di-perequazione-fsc" class="level3">
+<h3 class="anchored" data-anchor-id="il-fondo-di-perequazione-fsc">Il fondo di perequazione (FSC)</h3>
+<p>Il Fondo di solidarietà comunale vale 7,3 miliardi di euro nel 2024 (L. 228/2012, c.&nbsp;380-ter). Circa 2,8 miliardi vengono dall’IMU degli stessi comuni, trattenuta alla fonte; il resto viene dallo Stato. Nelle regioni a statuto ordinario una quota crescente del fondo (il 70% nel 2024, il 100% dal 2030) è distribuita in base alla differenza tra i <strong>fabbisogni standard</strong> di ogni comune e la sua <strong>capacità fiscale</strong> standard (L. 232/2016, c.&nbsp;449). Il FSC sposta quindi risorse dai comuni con una base imponibile ampia ai comuni con una base imponibile piccola.</p>
+</section>
+</section>
+<section id="la-vita-di-un-euro-competenza-cassa-residui" class="level2">
+<h2 class="anchored" data-anchor-id="la-vita-di-un-euro-competenza-cassa-residui">2. La vita di un euro: competenza, cassa, residui</h2>
+<p>Ogni euro passa per diverse fasi. Per le entrate: <em>accertamento</em> (si registra il diritto a riscuotere), <em>riscossione</em> (si incassa), <em>versamento</em> (il denaro arriva al tesoriere). Per le spese: <em>impegno</em> (si registra l’obbligazione), <em>liquidazione</em>, <em>ordinazione</em>, <em>pagamento</em>.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  subgraph REV["ENTRATE"]
+    direction LR
+    AC["accertamento"] --&gt; RI["riscossione&lt;br/&gt;(incasso)"]
+    AC -. "non ancora incassato" .-&gt; RA["residuo attivo"]
+    RA -. "credito dubbio" .-&gt; FC["FCDE&lt;br/&gt;accantonamento"]
+  end
+  subgraph SP["SPESE"]
+    direction LR
+    IM["impegno"] --&gt; PA["pagamento&lt;br/&gt;(uscita di cassa)"]
+    IM -. "esigibile quest'anno,&lt;br/&gt;non ancora pagato" .-&gt; RP["residuo passivo"]
+    IM -. "esigibile negli anni successivi" .-&gt; FPV["FPV&lt;br/&gt;fondo pluriennale vincolato"]
+  end
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>La regola chiave è la <em>competenza finanziaria potenziata</em>: un accertamento o un impegno si registra nell’anno in cui l’obbligazione <strong>scade</strong> (diventa esigibile), non nell’anno in cui viene decisa. Da questa regola nascono tre strumenti.</p>
+<ul>
+<li><strong>Residui.</strong> Un <em>residuo attivo</em> è un’entrata accertata ma non ancora incassata; un <em>residuo passivo</em> è una spesa impegnata ma non ancora pagata. Ogni anno, prima del rendiconto, il comune rivede tutti i residui (<em>riaccertamento ordinario</em>): li conserva, li cancella o li sposta all’anno in cui scadono davvero.</li>
+<li><strong>FPV, fondo pluriennale vincolato.</strong> Risorse già entrate per spese che scadono negli anni successivi, di solito un’opera pubblica pagata in più anni. Compare come spesa nell’anno N e come entrata nell’anno N+1.</li>
+<li><strong>FCDE, fondo crediti di dubbia esigibilità.</strong> Un accantonamento per le entrate che potrebbero non essere mai incassate, come tributi o multe non pagati. Si calcola sulla capacità di riscossione degli ultimi cinque anni. Non si spende: si mette da parte.</li>
+</ul>
+</section>
+<section id="un-esempio-il-risultato-di-amministrazione" class="level2">
+<h2 class="anchored" data-anchor-id="un-esempio-il-risultato-di-amministrazione">3. Un esempio: il risultato di amministrazione</h2>
+<p>Il <em>risultato di amministrazione</em> è il saldo complessivo del comune a fine anno:</p>
+<blockquote class="blockquote">
+<p>fondo di cassa al 31 dicembre + residui attivi − residui passivi − FPV</p>
+</blockquote>
+<p>Prendiamo un comune che al 1° gennaio ha: cassa 100, residui attivi 50, residui passivi 40, nessun FPV. Il suo risultato al 1° gennaio è 100 + 50 − 40 = <strong>110</strong>. Durante l’anno (i numeri sono inventati):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Evento</th>
+<th>Effetto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accertamenti dell’anno 1.000, di cui 850 incassati</td>
+<td>nuovi residui attivi: 150</td>
+</tr>
+<tr class="even">
+<td>Vecchi residui attivi: 35 incassati, 5 cancellati (il credito non esisteva)</td>
+<td>ne restano 10</td>
+</tr>
+<tr class="odd">
+<td>Impegni dell’anno 900, di cui 780 pagati</td>
+<td>nuovi residui passivi: 120</td>
+</tr>
+<tr class="even">
+<td>Vecchi residui passivi: 38 pagati, 2 cancellati</td>
+<td>ne restano 0</td>
+</tr>
+<tr class="odd">
+<td>Arriva un contributo di 60 per un’opera che sarà pagata l’anno dopo</td>
+<td>FPV al 31 dicembre: 60</td>
+</tr>
+</tbody>
+</table>
+<p>Al 31 dicembre:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Voce</th>
+<th>Importo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cassa: 100 + 850 + 35 − 780 − 38</td>
+<td>167</td>
+</tr>
+<tr class="even">
+<td>+ residui attivi: 150 + 10</td>
+<td>160</td>
+</tr>
+<tr class="odd">
+<td>− residui passivi: 120 + 0</td>
+<td>120</td>
+</tr>
+<tr class="even">
+<td>− FPV</td>
+<td>60</td>
+</tr>
+<tr class="odd">
+<td><strong>= risultato di amministrazione</strong></td>
+<td><strong>147</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Lo stesso risultato si ottiene dai flussi: 110 (risultato iniziale) + 40 (1.000 − 900 − 60, la gestione di competenza) − 3 (−5 + 2, la revisione dei vecchi residui) = 147.</p>
+<p>I 147 non sono soldi che il comune può spendere liberamente. Si dividono in quattro parti, in questo ordine: <strong>accantonata</strong> (per esempio il FCDE, diciamo 30), <strong>vincolata</strong> (risorse vincolate non ancora usate, diciamo 20), <strong>destinata agli investimenti</strong> (entrate in conto capitale non usate, diciamo 10) e <strong>libera</strong> (il resto: 87). Se le prime tre parti superassero il totale, il comune sarebbe in <em>disavanzo</em> e dovrebbe recuperarlo nei bilanci successivi.</p>
+</section>
+<section id="tre-documenti-e-un-calendario" class="level2">
+<h2 class="anchored" data-anchor-id="tre-documenti-e-un-calendario">4. Tre documenti e un calendario</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+  D["DUP&lt;br/&gt;documento di programmazione&lt;br/&gt;entro il 31 luglio, anno N−1"] --&gt; P["Bilancio di previsione&lt;br/&gt;almeno 3 anni&lt;br/&gt;entro il 31 dicembre, N−1"]
+  P --&gt; G["Gestione nell'anno N&lt;br/&gt;assestamento e salvaguardia&lt;br/&gt;degli equilibri entro il 31 luglio, N"]
+  G --&gt; RR["Revisione dei residui&lt;br/&gt;(riaccertamento)"]
+  RR --&gt; RE["Rendiconto&lt;br/&gt;entro il 30 aprile, N+1"]
+  RE --&gt; C["Bilancio consolidato&lt;br/&gt;conti del gruppo&lt;br/&gt;entro il 30 settembre, N+1"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Bilancio di previsione</th>
+<th>Rendiconto della gestione</th>
+<th>Bilancio consolidato</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Che cos’è</td>
+<td>L’autorizzazione a spendere: previsioni per almeno tre anni</td>
+<td>Quello che è successo davvero: accertamenti, impegni, incassi, pagamenti, residui, FPV, risultato</td>
+<td>I conti di tutto il gruppo: il comune più i suoi enti e le sue società</td>
+</tr>
+<tr class="even">
+<td>Contabilità</td>
+<td>Finanziaria (competenza e cassa)</td>
+<td>Finanziaria, più conto economico e stato patrimoniale</td>
+<td>Solo conto economico e stato patrimoniale</td>
+</tr>
+<tr class="odd">
+<td>Uso nella ricerca</td>
+<td>Per studiare i piani e gli errori di previsione</td>
+<td><strong>Per studiare che cosa hanno fatto davvero i comuni</strong></td>
+<td>Per vedere i servizi gestiti tramite società</td>
+</tr>
+</tbody>
+</table>
+<section id="due-significati-di-consolidato" class="level3">
+<h3 class="anchored" data-anchor-id="due-significati-di-consolidato">Due significati di “consolidato”</h3>
+<ol type="1">
+<li><strong>Il bilancio consolidato del gruppo.</strong> Spesso un comune gestisce dei servizi tramite società proprie (acqua, rifiuti, trasporti). Nel rendiconto mostra solo il pagamento alla società. Il consolidato aggiunge i conti delle società ed elimina i flussi interni al gruppo, così lo stesso euro non è contato due volte. Le partecipazioni molto piccole restano fuori (sotto l’1% del capitale, oppure sotto il 3% dell’attivo, del patrimonio netto e dei ricavi del comune).</li>
+<li><strong>Il consolidamento tra livelli di governo.</strong> Se sommiamo comuni, unioni di comuni, province e regione, un trasferimento dalla regione a un comune è contato due volte: una come spesa della regione e una come spesa del comune. Le statistiche che non eliminano questi flussi si chiamano “non consolidate”. Regola pratica: non sommare mai la spesa di livelli di governo diversi senza togliere i trasferimenti tra loro.</li>
+</ol>
+</section>
+</section>
+<section id="chi-decide-che-cosa" class="level2">
+<h2 class="anchored" data-anchor-id="chi-decide-che-cosa">5. Chi decide che cosa</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Chi decide</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quali tributi esistono, che cosa è tassato, chi paga, l’aliquota massima</td>
+<td>La legge nazionale</td>
+<td>D.Lgs. 446/1997, art. 52</td>
+</tr>
+<tr class="even">
+<td>L’aliquota dentro i limiti di legge, le esenzioni ammesse dalla legge, i regolamenti</td>
+<td>Il consiglio comunale</td>
+<td>Delibere pubblicate sul sito del Dipartimento delle Finanze</td>
+</tr>
+<tr class="odd">
+<td>Le tariffe TARI</td>
+<td>Il comune, per coprire il 100% del costo</td>
+<td>L. 147/2013, c.&nbsp;654</td>
+</tr>
+<tr class="even">
+<td>Quanto FSC riceve ogni comune</td>
+<td>Lo Stato, con fabbisogni standard e capacità fiscali</td>
+<td>L. 232/2016, c.&nbsp;449</td>
+</tr>
+<tr class="odd">
+<td>Come si registra tutto</td>
+<td>Le regole contabili nazionali</td>
+<td>D.Lgs. 118/2011 e i suoi allegati</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fonti-ufficiali" class="level2">
+<h2 class="anchored" data-anchor-id="fonti-ufficiali">Fonti ufficiali</h2>
+<ul>
+<li>Classificazione delle entrate: D.Lgs. 118/2011, Allegato 13/2 (<em>titoli, tipologie e categorie di entrata degli enti locali</em>); classificazione delle spese: Allegato 14 (<em>missioni, programmi, titoli e macroaggregati</em>) e il suo glossario (Allegato 14/2). Tutto sulle <a href="https://www.rgs.mef.gov.it/VERSIONE-I/e_government/amministrazioni_pubbliche/arconet/schemi_di_bilancio/">pagine Arconet della Ragioneria Generale dello Stato</a>.</li>
+<li>Principi contabili: Allegati 4/1 (programmazione), 4/2 (contabilità finanziaria), 4/3 (contabilità economico-patrimoniale), 4/4 (bilancio consolidato), sulla <a href="https://www.rgs.mef.gov.it/VERSIONE-I/e_government/amministrazioni_pubbliche/arconet/principi_contabili/">pagina Arconet dei principi contabili</a>.</li>
+<li>Piano dei conti integrato, compresa la versione dal 2027, sulla <a href="https://www.rgs.mef.gov.it/VERSIONE-I/e_government/amministrazioni_pubbliche/arconet/piano_dei_conti_integrato/">pagina Arconet del piano dei conti</a>.</li>
+<li>Leggi (testo vigente su <a href="https://www.normattiva.it">Normattiva</a>): L. 160/2019 (IMU, canone unico); L. 147/2013 (TARI); D.Lgs. 360/1998 (addizionale IRPEF); D.Lgs. 23/2011 (imposta di soggiorno); L. 228/2012 e L. 232/2016 (FSC); D.L. 16/2014 (contabilizzazione dell’IMU); D.Lgs. 446/1997 (regolamenti comunali sulle entrate).</li>
+<li>Dati: OpenBDAP, Ragioneria Generale dello Stato, bilanci armonizzati, rendiconto 2024.</li>
+</ul>
+</section>
+</div>
+<div class="pfm-en">
 <p>These notes explain how an Italian municipality (<em>comune</em>) gets its money and how it records it in its budget. They follow the harmonised accounting system introduced by D.Lgs. 118/2011, which all municipalities use since 2016. Official names of budget items are kept in Italian, in «quotes». Figures in euro per resident refer to the municipalities of Piedmont in the 2024 budget outturn (<em>rendiconto</em>); you can explore them municipality by municipality in the <a href="../data/piemonte-fiscal-map/index.html">interactive map</a>.</p>
 <section id="the-map-of-municipal-revenue" class="level2">
 <h2 class="anchored" data-anchor-id="the-map-of-municipal-revenue">1. The map of municipal revenue</h2>
@@ -500,9 +820,65 @@ ul.task-list li input[type="checkbox"] {
 <li>Laws (current text on <a href="https://www.normattiva.it">Normattiva</a>): L. 160/2019 (IMU, canone unico); L. 147/2013 (TARI); D.Lgs. 360/1998 (addizionale IRPEF); D.Lgs. 23/2011 (imposta di soggiorno); L. 228/2012 and L. 232/2016 (FSC); D.L. 16/2014 (recording of IMU); D.Lgs. 446/1997 (municipal tax regulations).</li>
 <li>Data: OpenBDAP, Ragioneria Generale dello Stato, harmonised budgets, rendiconto 2024.</li>
 </ul>
-
-
 </section>
+</div>
+<script>
+(function () {
+  // Italian is the default; the choice is shared with the Piedmont map page
+  var IT = {
+    title: "Come si finanziano i comuni italiani",
+    subtitle: "Una mappa dei tributi locali e del bilancio comunale",
+    description: "Appunti di finanza locale: i tributi comunali (IMU, addizionale IRPEF, TARI, imposta di soggiorno), il fondo di perequazione, il bilancio armonizzato (D.Lgs. 118/2011), residui, FPV e risultato di amministrazione.",
+    published: "Pubblicato", date: "29 ottobre 2026",
+    tab: "Come si finanziano i comuni italiani – Giovanni Cuttica",
+    toc: "In questa pagina"
+  };
+  var titleEl = document.querySelector("h1.title"), subEl = document.querySelector("p.subtitle"),
+      descEl = document.querySelector(".quarto-title-block .description p, .quarto-title-block .description"),
+      pubEl = document.querySelector(".quarto-title-meta-heading"),
+      dateEl = document.querySelector(".quarto-title-meta-contents .date");
+  var EN = { title: titleEl && titleEl.textContent, subtitle: subEl && subEl.textContent,
+             description: descEl && descEl.textContent, published: pubEl && pubEl.textContent,
+             date: dateEl && dateEl.textContent, tab: document.title, toc: "On this page" };
+
+  function apply(l) {
+    try { localStorage.setItem("pfm-lang", l); } catch (e) {}
+    document.body.classList.remove("pfm-lang-it", "pfm-lang-en");
+    document.body.classList.add("pfm-lang-" + l);
+    document.documentElement.lang = l;
+    document.getElementById("pfm-btn-it").classList.toggle("active", l === "it");
+    document.getElementById("pfm-btn-en").classList.toggle("active", l === "en");
+    var T = l === "it" ? IT : EN;
+    if (titleEl) titleEl.textContent = T.title;
+    if (subEl) subEl.textContent = T.subtitle;
+    if (descEl) descEl.textContent = T.description;
+    if (pubEl) pubEl.textContent = T.published;
+    if (dateEl) dateEl.textContent = T.date;
+    document.title = T.tab;
+    // page index (Quarto does not build it for headings inside the language
+    // blocks): rebuild it from the h2/h3 headings of the chosen language
+    var side = document.getElementById("quarto-margin-sidebar");
+    if (side) {
+      var heads = document.querySelectorAll((l === "it" ? ".pfm-it" : ".pfm-en") + " h2, " +
+                                            (l === "it" ? ".pfm-it" : ".pfm-en") + " h3");
+      var html = "<nav id='TOC' role='doc-toc' class='toc-active'><h2 id='toc-title'>" + T.toc + "</h2><ul>";
+      heads.forEach(function (h, n) {
+        if (!h.id) { h.id = "sec-" + l + "-" + n; }
+        html += "<li" + (h.tagName === "H3" ? " style='margin-left:0.8rem'" : "") +
+                "><a class='nav-link' href='#" + h.id + "'>" + h.textContent + "</a></li>";
+      });
+      side.innerHTML = html + "</ul></nav>";
+    }
+  }
+  var lang = "it";
+  try { if (localStorage.getItem("pfm-lang") === "en") lang = "en"; } catch (e) {}
+  document.getElementById("pfm-btn-it").addEventListener("click", function () { apply("it"); });
+  document.getElementById("pfm-btn-en").addEventListener("click", function () { apply("en"); });
+  apply(lang);
+})();
+</script>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
