@@ -6,3 +6,9 @@ _build/piemonte_bilanci/raw/
 
 # local Claude Code settings: never publish
 .claude/
+
+# reference library for the Notes (official texts, reports): local only
+_references/
+
+# parked note drafts: local only
+notes/_drafts/

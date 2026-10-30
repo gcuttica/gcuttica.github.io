@@ -71,7 +71,7 @@ The script downloads the raw files into `raw/` if missing (not in git, ~130 MB),
 
 The 2024 accertamento lies between the two tax years, as expected from principio 4/2 §3.7.5. No independent benchmark for IMU yet (F24 payments by comune not found in open data).
 
-Background on the accounting items: see the note *How Italian municipalities are financed* on this website (`notes/local-public-finance-italy.qmd`).
+Background on the accounting items: see the note *Municipal revenue in Italy* on this website (`notes/municipal-revenue.qmd`).
 
 ## Open points
 

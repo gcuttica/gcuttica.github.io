@@ -1,0 +1,820 @@
+---
+title: "Municipal revenue in Italy"
+subtitle: "How a comune is financed and how its revenue is recorded"
+description: "Lecture notes on the revenue of Italian municipalities: the classification of the harmonised budget (D.Lgs. 118/2011), the phases of revenue, IMU, addizionale IRPEF, TARI, imposta di soggiorno, canone unico, the Fondo di solidarietà comunale, transfers, non-tax and capital revenue, with worked examples."
+date: 2026-10-30
+categories: [Lecture Notes]
+toc: true
+---
+
+```{=html}
+<style>
+  /* language switch. The other language is moved off-screen, not removed,
+     so that its diagrams are still drawn correctly when the page opens. */
+  body:not(.pfm-lang-en) .pfm-en, body.pfm-lang-en .pfm-it {
+    position: absolute !important; left: -10000px; top: 0; width: 850px;
+    height: 0; overflow: hidden; visibility: hidden;
+  }
+  .pfm-langbar { display: flex; justify-content: flex-end; margin-bottom: 0.5rem; }
+  .pfm-langbar .btn { font-size: 0.8rem; padding: 0.15rem 0.6rem; }
+</style>
+<div class="pfm-langbar">
+  <div class="btn-group" role="group" aria-label="Lingua / Language">
+    <button type="button" class="btn btn-outline-secondary" id="pfm-btn-it">ITA</button>
+    <button type="button" class="btn btn-outline-secondary" id="pfm-btn-en">ENG</button>
+  </div>
+</div>
+```
+
+::: {.pfm-it}
+Questi appunti spiegano da dove vengono le risorse di un comune italiano e come vengono registrate nel bilancio. Seguono il sistema contabile armonizzato del D.Lgs. 118/2011, che tutti gli enti locali applicano dal 2016. Le regole sono aggiornate a ottobre 2026. I nomi ufficiali delle voci di bilancio sono riportati tra «virgolette», come compaiono nei documenti ufficiali. **Tutti i numeri degli esempi sono inventati**: servono solo a mostrare come funzionano i calcoli.
+
+Gli appunti riguardano solo le entrate. Le spese, e il modo in cui entrate e spese si combinano nel risultato di fine anno (residui, fondo pluriennale vincolato, risultato di amministrazione), saranno oggetto di appunti separati.
+
+## 1. Come sono classificate le entrate
+
+### Tre livelli: titolo, tipologia, categoria
+
+L'Allegato 13/2 al D.Lgs. 118/2011 classifica le entrate degli enti locali su tre livelli:
+
+- il **titolo** indica la natura generale dell'entrata (per esempio: tributi, trasferimenti, entrate in conto capitale);
+- la **tipologia** indica la natura dell'entrata all'interno del titolo (per esempio, nel Titolo 1: imposte, compartecipazioni, fondi perequativi);
+- la **categoria** indica la singola entrata (per esempio: «Imposta municipale propria»).
+
+I titoli delle entrate di un comune sono sette. Il Titolo 8 non esiste per gli enti locali.
+
+| Titolo | Nome ufficiale | È una risorsa dell'anno? |
+|---|---|---|
+| 1 | «Entrate correnti di natura tributaria, contributiva e perequativa» | Sì |
+| 2 | «Trasferimenti correnti» | Sì |
+| 3 | «Entrate extratributarie» | Sì |
+| 4 | «Entrate in conto capitale» | Sì, ma di norma destinate agli investimenti |
+| 5 | «Entrate da riduzione di attività finanziarie» | No: il comune vende o incassa un'attività finanziaria che già possedeva |
+| 6 | «Accensione prestiti» | No: è un debito che andrà restituito |
+| 7 | «Anticipazioni da istituto tesoriere/cassiere» | No: è un prestito di cassa a breve, da chiudere entro l'anno |
+| 9 | «Entrate per conto terzi e partite di giro» | No: sono somme che il comune incassa per conto di altri e poi riversa (per esempio le ritenute sugli stipendi) |
+
+Lo schema mostra i titoli e le tipologie principali. Le sezioni successive li descrivono uno per uno.
+
+```{mermaid}
+flowchart LR
+  R["ENTRATE<br/>DEL COMUNE"] --> T1["Titolo 1<br/>Tributi e perequazione"]
+  R --> T2["Titolo 2<br/>Trasferimenti correnti"]
+  R --> T3["Titolo 3<br/>Entrate extratributarie"]
+  R --> T4["Titolo 4<br/>Entrate in conto capitale"]
+  R --> TX["Titoli 5, 6, 7, 9<br/>operazioni finanziarie<br/>e partite di giro"]
+  T1 --> A["Tip. 101 Imposte<br/>IMU, addizionale IRPEF,<br/>TARI, imposta di soggiorno"]
+  T1 --> F["Tip. 301 e 302<br/>Fondi perequativi<br/>(FSC)"]
+  T2 --> TS["Da Stato, Regione,<br/>altri enti, UE"]
+  T3 --> T3a["Servizi, beni,<br/>sanzioni, interessi"]
+  T4 --> T4a["Contributi agli investimenti,<br/>alienazioni,<br/>permessi di costruire"]
+```
+
+### Un quarto e un quinto livello: il piano dei conti
+
+Sotto la categoria, ogni entrata ha un codice del **piano dei conti integrato** (Allegato 6 al D.Lgs. 118/2011), che arriva fino al quinto livello. Il codice si legge da sinistra a destra. Per esempio, per l'IMU:
+
+| Livello | Codice | Nome ufficiale |
+|---|---|---|
+| I | E.1.00.00.00.000 | «Entrate correnti di natura tributaria, contributiva e perequativa» (il titolo) |
+| II | E.1.01.00.00.000 | «Tributi» |
+| III | E.1.01.01.00.000 | «Imposte, tasse e proventi assimilati» (la tipologia 101) |
+| IV | E.1.01.01.06.000 | «Imposta municipale propria» (la categoria) |
+| V | E.1.01.01.06.001 | «Imposta municipale propria riscossa a seguito dell'attività ordinaria di gestione» |
+| V | E.1.01.01.06.002 | «Imposte municipale propria riscosse a seguito di attività di verifica e controllo» |
+
+Il quinto livello distingue i pagamenti spontanei dei contribuenti (.001) dalle somme recuperate con i controlli contro l'evasione (.002). La stessa distinzione esiste per quasi tutti i tributi.
+
+::: {.callout-note collapse="true"}
+## Per chi usa i dati di bilancio (BDAP)
+- Le banche dati pubbliche (OpenBDAP della Ragioneria Generale dello Stato) riportano i rendiconti per titolo e tipologia e, in schemi separati, per categoria.
+- Non sommare i Titoli 5, 6, 7 e 9 alle "entrate totali": sono prestiti, operazioni di cassa e partite di giro. Un indicatore di "entrate proprie" o di "autonomia finanziaria" si costruisce con i Titoli 1, 2 e 3.
+- Le classificazioni cambiano nel tempo. Controllare sempre la versione dell'Allegato 13/2 e del piano dei conti valida per l'anno dei dati (per esempio il canone unico cambia titolo nel 2027, vedi sezione 3.6).
+:::
+
+## 2. Le fasi dell'entrata
+
+Il Testo unico degli enti locali (TUEL, D.Lgs. 267/2000, art. 178) stabilisce che «le fasi di gestione delle entrate sono l'accertamento, la riscossione ed il versamento».
+
+1. **Accertamento** (art. 179). È la prima fase: il comune verifica, sulla base di idonea documentazione, la ragione del credito e il titolo giuridico, individua il debitore, quantifica la somma e fissa la scadenza. L'accertamento si registra quando l'obbligazione è perfezionata ed è **imputato all'anno in cui l'obbligazione scade** (art. 179, c. 3-bis). Il TUEL aggiunge: «È vietato l'accertamento attuale di entrate future».
+2. **Riscossione** (art. 180). È l'incasso materiale della somma da parte del tesoriere o di un altro incaricato, disposto con un *ordinativo di incasso*.
+3. **Versamento** (art. 181). È il trasferimento delle somme riscosse nelle casse del comune. Gli incaricati interni devono versare al tesoriere entro i termini fissati dal regolamento di contabilità, al massimo ogni quindici giorni lavorativi.
+
+Un'entrata accertata ma non ancora incassata a fine anno diventa un **residuo attivo**. Se c'è il rischio che non venga mai incassata, il comune deve mettere da parte una quota corrispondente nel **fondo crediti di dubbia esigibilità** (FCDE). Residui e FCDE saranno spiegati negli appunti sul risultato di amministrazione.
+
+### Quando si accertano le principali entrate
+
+Il momento dell'accertamento cambia a seconda del tipo di entrata. Le regole sono nel TUEL (art. 179, c. 2) e nel principio contabile della contabilità finanziaria (Allegato 4/2 al D.Lgs. 118/2011, punti 3.6 e 3.7).
+
+| Entrata | Quando si accerta | Fonte |
+|---|---|---|
+| Tributi pagati dal contribuente in autoliquidazione (per esempio l'IMU) | Sulla base delle somme incassate entro la chiusura del rendiconto e comunque entro il termine per approvarlo | All. 4/2, p. 3.7.5 |
+| Addizionale comunale IRPEF | Con una regola speciale basata sugli anni precedenti (vedi sezione 3.3) | All. 4/2, p. 3.7.5 |
+| Tributi riscossi con ruoli, avvisi di accertamento o liste di carico (spesso la TARI e il recupero dell'evasione) | Nell'anno in cui sono emessi il ruolo, l'avviso o la lista di carico, se la scadenza di pagamento cade entro il termine del rendiconto | All. 4/2, p. 3.7.1 |
+| Sanzioni e interessi dei ruoli coattivi | Per cassa (quando sono incassati) | All. 4/2, p. 3.7.1 |
+| Trasferimenti da altre amministrazioni pubbliche | Nell'anno in cui l'amministrazione che paga adotta l'impegno di spesa. Per i trasferimenti del Ministero dell'interno fanno fede le "spettanze" pubblicate sul suo sito | TUEL art. 179, c. 2, lett. c-bis; All. 4/2, p. 3.6 b |
+| Permessi di costruire | La registrazione avviene al rilascio del permesso; l'entrata è imputata agli anni in cui scadono i pagamenti previsti nel permesso | All. 4/2, p. 3.6 d |
+
+## 3. Titolo 1: tributi e perequazione
+
+Il Titolo 1 dei comuni ha quattro tipologie:
+
+- **101 «Imposte tasse e proventi assimilati»**: i tributi del comune;
+- **104 «Compartecipazioni di tributi»**: quote di tributi erariali attribuite ai comuni (per esempio «Compartecipazione IRPEF ai Comuni»);
+- **301 «Fondi perequativi da Amministrazioni Centrali»**: soprattutto il Fondo di solidarietà comunale;
+- **302 «Fondi perequativi dalla Regione o Provincia autonoma»**.
+
+Attenzione: le tipologie 301 e 302 non sono tributi. Sono trasferimenti con finalità di perequazione, classificati nel Titolo 1 per legge.
+
+### 3.1 I tributi del comune (tipologia 101)
+
+Le categorie della tipologia 101 che contano oggi per un comune sono:
+
+| Categoria | Nome ufficiale | Che cosa contiene |
+|---|---|---|
+| 1010106 | «Imposta municipale propria» | IMU |
+| 1010116 | «Addizionale comunale IRPEF» | Addizionale comunale all'imposta sul reddito |
+| 1010141 | «Imposta di soggiorno» | Imposta sui pernottamenti |
+| 1010151 | «Tassa smaltimento rifiuti solidi urbani» | Vecchio nome (TARSU) usato da molti comuni anche per la TARI |
+| 1010161 | «Tributo comunale sui rifiuti e sui servizi» | Nome della TARES (2013), usato da altri comuni per la TARI |
+| 1010178, 1010179 | Canone unico patrimoniale e canone mercatale | Solo dal 2027 (vedi sezione 3.6) |
+
+Altre categorie (ICI, TASI, imposta sulla pubblicità, TOSAP) riguardano tributi aboliti: oggi possono contenere solo incassi arretrati o recuperi di anni passati.
+
+### 3.2 IMU, imposta municipale propria
+
+L'IMU è regolata dalla L. 160/2019, art. 1, commi 738-783 (la "nuova IMU" dal 2020, che ha assorbito anche la TASI).
+
+**Che cosa è tassato.** Il presupposto è il **possesso di immobili**: fabbricati, aree fabbricabili e terreni agricoli (c. 740). L'abitazione principale non paga, tranne quella di lusso (categorie catastali A/1, A/8, A/9).
+
+**La base imponibile.** Per un fabbricato iscritto in catasto, la base imponibile è la rendita catastale al 1° gennaio, **rivalutata del 5%** e moltiplicata per un coefficiente che dipende dalla categoria catastale (c. 745):
+
+| Categoria catastale | Moltiplicatore |
+|---|---|
+| Gruppo A (esclusa A/10), C/2, C/6, C/7 | 160 |
+| Gruppo B, C/3, C/4, C/5 | 140 |
+| A/10 (uffici) e D/5 (banche, assicurazioni) | 80 |
+| Gruppo D, esclusa D/5 | 65 |
+| C/1 (negozi) | 55 |
+
+Per le aree fabbricabili la base è il valore venale in comune commercio al 1° gennaio (c. 746).
+
+**Le aliquote.** La legge fissa un'aliquota di base. Il consiglio comunale può modificarla entro limiti fissati dalla legge:
+
+| Immobile | Aliquota di base | Il comune può... | Comma |
+|---|---|---|---|
+| Fabbricati e aree diversi dall'abitazione principale | 0,86% | salire fino all'1,06% o scendere fino a zero | 754 |
+| Abitazione principale di lusso (A/1, A/8, A/9) | 0,5% | salire di 0,1 punti o scendere fino a zero; detrazione di 200 € | 748, 749 |
+| Fabbricati del gruppo D (uso produttivo) | 0,86%, di cui 0,76% **allo Stato** | salire fino all'1,06% o scendere fino allo 0,76% | 753, 744 |
+| Terreni agricoli | 0,76% | salire fino all'1,06% o scendere fino a zero | 752 |
+| Fabbricati rurali strumentali | 0,1% | solo scendere fino a zero | 750 |
+
+I comuni che fino al 2019 applicavano la maggiorazione della TASI possono superare l'1,06% di altri 0,08 punti, quindi fino all'1,14%, nella stessa misura del 2015; negli anni successivi possono solo ridurla (c. 755).
+
+**Riduzioni ed esenzioni principali.** La base imponibile è ridotta del 50% per i fabbricati di interesse storico o artistico, per quelli inagibili e di fatto non utilizzati, e per le abitazioni date in comodato a genitori o figli che ci abitano, alle condizioni di legge (c. 747). Per le abitazioni affittate a canone concordato l'imposta è ridotta al 75% (c. 760). Sono esenti, tra gli altri, i terreni agricoli posseduti e condotti da coltivatori diretti e imprenditori agricoli professionali (c. 758), gli immobili degli enti pubblici usati per compiti istituzionali e quelli destinati al culto (c. 759), e dal 2022 i fabbricati costruiti dalle imprese per la vendita e non affittati (c. 751).
+
+**I pagamenti.** Il contribuente calcola da solo l'imposta e paga in due rate, il **16 giugno** e il **16 dicembre** (c. 762). La prima rata si calcola con le aliquote dell'anno precedente; il saldo usa le aliquote dell'anno, pubblicate sul sito del Dipartimento delle Finanze entro il 28 ottobre. La delibera deve contenere il *prospetto delle aliquote* compilato sul Portale del federalismo fiscale; senza prospetto non produce effetti (cc. 756-757). Se la delibera non è pubblicata entro il 28 ottobre, valgono le aliquote dell'anno prima; ma dal primo anno in cui il prospetto è obbligatorio, un comune senza una delibera valida e pubblicata in tempo applica le **aliquote di base** della legge (c. 767).
+
+**Esempio 1: una seconda casa.** Un appartamento di categoria A/2 ha una rendita catastale di 750 €. Il comune applica l'1,06%.
+
+| Passo | Calcolo | Risultato |
+|---|---|---|
+| Rendita rivalutata | 750 × 1,05 | 787,50 € |
+| Base imponibile | 787,50 × 160 | 126.000 € |
+| IMU annua | 126.000 × 1,06% | 1.335,60 € |
+| Rata di giugno (aliquota dell'anno prima, qui uguale) | metà | 667,80 € |
+| Rata di dicembre (saldo) | 1.335,60 − 667,80 | 667,80 € |
+
+Se lo stesso appartamento fosse affittato a canone concordato, l'imposta scenderebbe al 75%: 1.001,70 €.
+
+**Esempio 2: un capannone.** Un capannone di categoria D/7 ha una rendita di 10.000 €. Il comune applica l'1,06%.
+
+| Passo | Calcolo | Risultato |
+|---|---|---|
+| Base imponibile | 10.000 × 1,05 × 65 | 682.500 € |
+| IMU totale | 682.500 × 1,06% | 7.234,50 € |
+| di cui allo Stato (0,76%) | 682.500 × 0,76% | 5.187,00 € |
+| di cui al comune (0,30%) | 682.500 × 0,30% | 2.047,50 € |
+
+L'impresa paga tutto con lo stesso modello F24, ma nel bilancio del comune entrano solo 2.047,50 €.
+
+**Come l'IMU entra nel bilancio.** Due regole sono importanti.
+
+1. L'IMU si accerta **sulla base degli incassi**, compresi quelli che arrivano entro la chiusura del rendiconto (All. 4/2, p. 3.7.5): il comune non registra quanto dovrebbe incassare, ma quanto incassa.
+2. Una parte dell'IMU pagata dai contribuenti non arriva mai al comune: viene trattenuta alla fonte per finanziare il Fondo di solidarietà comunale (sezione 3.8). Il comune registra l'IMU **al netto** di questa trattenuta (D.L. 16/2014, art. 6).
+
+::: {.callout-note collapse="true"}
+## Per chi usa i dati di bilancio (BDAP)
+- L'IMU nei bilanci comunali è **al netto** della quota trattenuta per il FSC e non comprende la quota dello Stato sui fabbricati del gruppo D. È quindi minore dell'IMU pagata dai contribuenti del comune. Per il gettito totale servono i dati del Dipartimento delle Finanze sui versamenti F24.
+- Le somme recuperate con i controlli sono nel quinto livello .002 del piano dei conti, oppure, se riscosse con avvisi o ruoli, possono comparire in anni diversi da quello d'imposta.
+:::
+
+### 3.3 Addizionale comunale IRPEF
+
+L'addizionale è regolata dal D.Lgs. 360/1998, art. 1.
+
+- **Base imponibile**: il reddito complessivo IRPEF, al netto degli oneri deducibili (c. 4). L'addizionale è dovuta solo se, per lo stesso anno, è dovuta l'IRPEF netta.
+- **Aliquota**: la decide il comune con un regolamento. La variazione **non può superare 0,8 punti percentuali** (c. 3). Il comune può anche fissare una **soglia di esenzione** legata al reddito (c. 3-bis).
+- **A quale comune va**: al comune del domicilio fiscale del contribuente al 1° gennaio dell'anno a cui l'addizionale si riferisce (c. 4).
+- **Pagamenti**: un acconto del 30% e un saldo. L'acconto si calcola sul reddito dell'anno precedente, con l'aliquota e la soglia dell'anno precedente (c. 4). Per i lavoratori dipendenti e i pensionati paga il sostituto d'imposta: l'acconto è trattenuto in un massimo di nove rate mensili da marzo; il saldo in un massimo di undici rate dopo il conguaglio (c. 5).
+
+**Esempio 3: un contribuente.** Il comune applica lo 0,8%, con una soglia di esenzione di 12.000 €. Un dipendente ha un reddito imponibile di 27.000 € nel 2025 e di 28.000 € nel 2026.
+
+| Passo | Calcolo | Risultato |
+|---|---|---|
+| Addizionale 2026 | 28.000 × 0,8% | 224,00 € |
+| Acconto 2026, trattenuto nel 2026 | 30% × (27.000 × 0,8%) | 64,80 € |
+| Saldo 2026, trattenuto nel 2027 | 224,00 − 64,80 | 159,20 € |
+
+Un contribuente con un reddito di 11.000 € non pagherebbe nulla, perché è sotto la soglia di esenzione.
+
+**Come l'addizionale entra nel bilancio.** Il comune non sa quanto incasserà, perché il saldo arriva l'anno dopo. Per questo il principio contabile prevede una regola prudente (All. 4/2, p. 3.7.5): nell'anno *t* il comune può accertare un importo pari a quello accertato nell'anno *t*−2, ma **non superiore** alla somma di quanto ha incassato per quell'anno d'imposta (in conto competenza nell'anno *t*−2 e in conto residui nell'anno *t*−1). Se il comune cambia l'aliquota, l'importo si riproporziona; se istituisce l'addizionale per la prima volta, usa una stima prudente, che non può superare il risultato del simulatore del Portale del federalismo fiscale.
+
+**Esempio 4: l'accertamento nel 2026.**
+
+| Voce | Importo |
+|---|---|
+| Accertato nel 2024 | 1.000.000 € |
+| Incassato nel 2024 (competenza) | 700.000 € |
+| Incassato nel 2025 per l'anno d'imposta 2024 (residui) | 280.000 € |
+| Limite: 700.000 + 280.000 | 980.000 € |
+| **Accertamento possibile nel 2026** | **980.000 €** (il minore tra 1.000.000 e 980.000) |
+
+### 3.4 TARI, tassa sui rifiuti
+
+La TARI è regolata dalla L. 147/2013, art. 1, commi 639-668.
+
+- **Presupposto**: il possesso o la detenzione di locali o aree scoperte, a qualsiasi uso, che possono produrre rifiuti urbani (c. 641). Se più persone possiedono o detengono lo stesso locale, rispondono tutte insieme (c. 642).
+- **Copertura dei costi**: le tariffe devono assicurare **la copertura integrale dei costi** di investimento e di esercizio del servizio rifiuti (c. 654), compresi costi accessori come lo spazzamento delle strade. La TARI è quindi il prezzo di un servizio: una TARI alta indica un servizio costoso, non per forza un carico fiscale alto.
+- **Come si calcolano le tariffe**: il comune usa i criteri del D.P.R. 158/1999 (c. 651) oppure un criterio alternativo basato sulle quantità medie di rifiuti per metro quadro e per tipo di attività (c. 652). I costi da coprire sono fissati nel piano economico-finanziario (PEF), redatto con il metodo tariffario dell'ARERA, l'autorità di regolazione (per il 2026-2029 il metodo "MTR-3").
+- **Tariffa corrispettiva**: i comuni che misurano i rifiuti conferiti da ogni utente possono sostituire la TARI con una tariffa che ha natura di corrispettivo, applicata e riscossa direttamente dal gestore del servizio (c. 668). In questo caso l'entrata non è un tributo e di norma non passa dal bilancio del comune.
+- **Tributo provinciale**: insieme alla TARI si paga il tributo provinciale per le funzioni di tutela dell'ambiente (c. 666), che però spetta alla provincia o città metropolitana.
+
+**Come la TARI entra nel bilancio.** In genere il comune invia gli avvisi di pagamento (liste di carico): la TARI si accerta nell'anno in cui la lista di carico è emessa, per l'intero importo dovuto (All. 4/2, p. 3.7.1). Poiché una parte della TARI non viene pagata, su questa entrata pesa molto il fondo crediti di dubbia esigibilità.
+
+::: {.callout-note collapse="true"}
+## Per chi usa i dati di bilancio (BDAP)
+- Nel piano dei conti non esiste una voce chiamata "TARI". I comuni usano la categoria 1010151 «Tassa smaltimento rifiuti solidi urbani» oppure la 1010161 «Tributo comunale sui rifiuti e sui servizi». Per avere la TARI bisogna **sommare le due categorie**.
+- I comuni con tariffa corrispettiva non hanno TARI in bilancio: un valore zero non vuol dire che il servizio sia gratuito.
+- La TARI accertata comprende anche la parte che non sarà incassata: per misurare il gettito effettivo conviene guardare anche le riscossioni.
+:::
+
+### 3.5 Imposta di soggiorno
+
+L'imposta di soggiorno è regolata dal D.Lgs. 23/2011, art. 4.
+
+- **Chi può istituirla**: i comuni capoluogo di provincia, le unioni di comuni e i comuni inclusi negli elenchi regionali delle località turistiche o città d'arte (c. 1).
+- **Quanto**: fino a **5 € per notte**, in modo graduale rispetto al prezzo (c. 1). I capoluoghi con presenze turistiche pari ad almeno venti volte i residenti possono arrivare all'importo massimo previsto per il contributo di soggiorno di Roma Capitale (c. 1-bis).
+- **Chi paga e chi versa**: paga chi alloggia nelle strutture ricettive; il gestore della struttura è responsabile del versamento e della dichiarazione, con diritto di rivalsa sull'ospite (c. 1-ter).
+- **Destinazione**: il gettito è **vincolato** a interventi per il turismo, per i beni culturali e ambientali e i relativi servizi pubblici locali, ai costi della raccolta dei rifiuti e, entro certi limiti, alla sicurezza urbana (c. 1).
+- **Alternativa nelle isole minori**: i comuni delle isole minori possono istituire, al posto dell'imposta di soggiorno, un contributo di sbarco (c. 3-bis).
+
+### 3.6 Canone unico patrimoniale
+
+Dal 2021 il **canone unico** (L. 160/2019, commi 816-836) ha sostituito i vecchi prelievi sull'occupazione di spazi pubblici e sulla pubblicità (TOSAP, COSAP, imposta comunale sulla pubblicità, diritti sulle pubbliche affissioni). I commi 837-847 hanno introdotto un canone analogo per i mercati (*canone mercatale*).
+
+Il canone unico non è un tributo: è un canone patrimoniale. Fino al 2026 è registrato nel **Titolo 3** (entrate extratributarie). Dal **2027** il nuovo piano dei conti lo riporta nel **Titolo 1**, tipologia 101, con le voci E.1.01.01.78 (canone unico) ed E.1.01.01.79 (canone mercatale).
+
+::: {.callout-note collapse="true"}
+## Per chi usa i dati di bilancio (BDAP)
+Le serie storiche dei "tributi propri" hanno quindi **due interruzioni**: nel 2021 (TOSAP e imposta sulla pubblicità escono dal Titolo 1 ed entrano nel Titolo 3 come canone) e nel 2027 (il canone torna nel Titolo 1). Per confronti nel tempo conviene trattare il canone come una voce separata.
+:::
+
+### 3.7 Compartecipazioni (tipologia 104)
+
+La tipologia 104 raccoglie quote di tributi dello Stato attribuite ai comuni: le categorie per i comuni sono «Compartecipazione IVA ai Comuni», «Compartecipazione IRPEF ai Comuni» e «Altre compartecipazioni a comuni». Nei bilanci dei comuni delle regioni a statuto ordinario sono importi di solito piccoli.
+
+### 3.8 Il Fondo di solidarietà comunale (tipologie 301 e 302)
+
+**Che cos'è.** Il Fondo di solidarietà comunale (FSC) è il principale strumento di **perequazione** tra i comuni: sposta risorse dai comuni con basi imponibili ampie ai comuni con basi imponibili piccole o con bisogni maggiori. È regolato dalla L. 228/2012 (art. 1, c. 380-ter) e dalla L. 232/2016 (art. 1, commi 448-452).
+
+**Quanto vale e da dove viene.** La dotazione è fissata dalla legge: **6.887,7 milioni di euro nel 2026** (L. 232/2016, c. 448, come modificato dalla legge di bilancio 2026). Una parte rilevante è pagata dai comuni stessi: il **22% del gettito IMU ad aliquota di base**, circa 2,8 miliardi, viene trattenuto alla fonte (per questo l'IMU è registrata al netto, sezione 3.2). Il resto viene dallo Stato.
+
+**Come è diviso.** Il Fondo ha due componenti principali (Camera dei deputati, Servizio Studi, 2026).
+
+- La **componente ristorativa** (circa 3,8 miliardi nel 2026) compensa i comuni per il gettito perso con le esenzioni IMU e TASI sull'abitazione principale introdotte nel 2016. È divisa in base al gettito effettivo del 2015.
+- La **componente tradizionale** (1.900,6 milioni per i comuni delle regioni a statuto ordinario e 464,1 milioni per quelli di Sicilia e Sardegna nel 2026) è divisa in parte secondo le **risorse storiche** dei comuni e in parte secondo un criterio **perequativo**.
+
+A queste si aggiungono risorse statali per correggere gli effetti del riparto (672 milioni nel 2026) e altre quote minori.
+
+**Il criterio perequativo.** Si basa sulla differenza tra due grandezze calcolate per ogni comune delle regioni a statuto ordinario:
+
+- i **fabbisogni standard** (D.Lgs. 216/2010): il fabbisogno finanziario di un comune in base alle sue caratteristiche territoriali e socio-demografiche, non in base a quanto ha speso in passato;
+- la **capacità fiscale**: il gettito che il comune otterrebbe dalle sue entrate proprie applicando aliquote standard alla sua base imponibile, non il gettito effettivo.
+
+Un comune con fabbisogni maggiori della capacità fiscale riceve risorse; un comune con capacità fiscale maggiore dei fabbisogni ne cede.
+
+**Quanto pesa la perequazione nel 2026.** Due percentuali crescono ogni anno.
+
+- La quota della componente tradizionale divisa con il criterio perequativo: **80% nel 2026**, fino al 100% nel 2030. Il restante 20% segue le risorse storiche.
+- Il **target perequativo**, cioè la parte della capacità fiscale che entra nel calcolo: **85% nel 2026**, fino al 100% dal 2029. Per il restante 15% vale ancora il criterio storico.
+
+L'applicazione effettiva della perequazione è il prodotto delle due: **80% × 85% = 68%**. Inoltre un meccanismo correttivo limita le variazioni troppo forti da un anno all'altro: si attiva quando le risorse di un comune aumentano o diminuiscono di oltre il 4% rispetto alle risorse storiche (L. 232/2016, c. 450). Dal 2026 Roma Capitale è esclusa dal riparto della componente tradizionale e versa al Fondo un contributo fisso.
+
+**Esempio 5: il peso della perequazione (semplificato).** Prendiamo un comune che, con il solo criterio storico, riceverebbe 1.000.000 €, e con il solo criterio perequativo ne riceverebbe 600.000 €.
+
+| Parte | Calcolo | Importo |
+|---|---|---|
+| 20% secondo le risorse storiche | 0,20 × 1.000.000 | 200.000 € |
+| 80% secondo il criterio perequativo, di cui: | | |
+| – 85% secondo fabbisogni e capacità | 0,80 × 0,85 × 600.000 | 408.000 € |
+| – 15% ancora secondo le risorse storiche | 0,80 × 0,15 × 1.000.000 | 120.000 € |
+| **Totale** | 0,32 × 1.000.000 + 0,68 × 600.000 | **728.000 €** |
+
+L'esempio mostra solo la logica della formula. Il riparto vero comprende anche la componente ristorativa, il correttivo del 4% e le risorse aggiuntive, ed è calcolato ogni anno dal Ministero dell'interno, che paga il Fondo in due rate, entro maggio (66%) ed entro ottobre.
+
+**Le regioni a statuto speciale.** I comuni di **Sicilia e Sardegna** ricevono il FSC ma non partecipano al meccanismo perequativo basato su fabbisogni e capacità fiscali. Nelle altre autonomie speciali (Valle d'Aosta, Friuli-Venezia Giulia, Trentino-Alto Adige) la finanza dei comuni è regolata dalla regione o dalla provincia autonoma: i loro fondi perequativi sono registrati nella tipologia 302 «Fondi perequativi dalla Regione o Provincia autonoma».
+
+**Un fondo distinto.** Dal 2025 le risorse statali vincolate ai servizi sociali, agli asili nido e al trasporto scolastico degli studenti con disabilità sono uscite dal FSC e confluite nel **Fondo speciale equità livello dei servizi**: sono assegnate ai comuni in cambio del raggiungimento di *obiettivi di servizio*.
+
+::: {.callout-note collapse="true"}
+## Per chi usa i dati di bilancio (BDAP)
+- Il FSC è nella tipologia 301 (categoria 1030101 «Fondi perequativi dallo Stato»). Per i comuni che versano più di quanto ricevono, il "FSC netto" può essere negativo: il versamento non compare come spesa, ma come minore IMU (sezione 3.2).
+- Per confrontare comuni di regioni diverse, ricordare che IMU e FSC sono collegati: un indicatore di "tributi propri" senza il FSC penalizza i comuni con una quota alta di trattenuta.
+- Un esempio di questi dati per i comuni di una regione è la [mappa interattiva del Piemonte](../data/piemonte-fiscal-map/index.qmd).
+:::
+
+## 4. Titolo 2: trasferimenti correnti
+
+Il Titolo 2 raccoglie i trasferimenti destinati a finanziare la spesa corrente. Le tipologie indicano chi paga:
+
+| Tipologia | Nome ufficiale |
+|---|---|
+| 101 | «Trasferimenti correnti da Amministrazioni pubbliche» (Stato, Regione, altri enti locali, enti di previdenza) |
+| 102 | «Trasferimenti correnti da Famiglie» |
+| 103 | «Trasferimenti correnti da Imprese» (comprese le sponsorizzazioni) |
+| 104 | «Trasferimenti correnti da Istituzioni Sociali Private» |
+| 105 | «Trasferimenti correnti dall'Unione Europea e dal Resto del Mondo» |
+
+Molti trasferimenti sono **vincolati**: possono essere spesi solo per lo scopo per cui sono stati dati (per esempio i fondi regionali per i servizi sociali). Le somme vincolate non spese a fine anno restano vincolate. Come si è visto nella sezione 2, un trasferimento si accerta quando l'ente che paga ha impegnato la spesa.
+
+## 5. Titolo 3: entrate extratributarie
+
+Il Titolo 3 raccoglie le entrate correnti che non sono tributi né trasferimenti:
+
+| Tipologia | Nome ufficiale | Esempi |
+|---|---|---|
+| 100 | «Vendita di beni e servizi e proventi derivanti dalla gestione dei beni» | Rette degli asili nido e mense scolastiche, parcheggi a pagamento, affitti e concessioni di immobili comunali, canone unico fino al 2026 |
+| 200 | «Proventi derivanti dall'attività di controllo e repressione delle irregolarità e degli illeciti» | Multe, soprattutto per violazioni del codice della strada |
+| 300 | «Interessi attivi» | Interessi su depositi e prestiti concessi |
+| 400 | «Altre entrate da redditi da capitale» | Dividendi e utili delle società partecipate |
+| 500 | «Rimborsi e altre entrate correnti» | Rimborsi, indennizzi di assicurazione |
+
+Per i servizi a domanda individuale (asili nido, mense, impianti sportivi) gli utenti pagano tariffe che spesso coprono solo una parte del costo; il resto è coperto con le altre entrate del comune.
+
+## 6. Titolo 4: entrate in conto capitale
+
+Il Titolo 4 raccoglie le entrate che finanziano gli **investimenti**:
+
+| Tipologia | Nome ufficiale | Esempi |
+|---|---|---|
+| 100 | «Tributi in conto capitale» | Imposte da sanatorie e condoni |
+| 200 | «Contributi agli investimenti» | Contributi dello Stato, della Regione o dell'Unione europea per opere pubbliche (compresi i fondi del PNRR) |
+| 300 | «Altri trasferimenti in conto capitale» | Trasferimenti per assunzione o cancellazione di debiti, per il ripiano di disavanzi |
+| 400 | «Entrate da alienazione di beni materiali e immateriali» | Vendita di immobili e terreni comunali |
+| 500 | «Altre entrate in conto capitale» | Permessi di costruire (piano dei conti E.4.05.01.01.001), rimborsi in conto capitale |
+
+Queste entrate, di norma, non possono finanziare la spesa corrente. I proventi dei permessi di costruire hanno una destinazione fissata dalla legge (opere di urbanizzazione, manutenzione del patrimonio e altri interventi elencati dalla L. 232/2016, art. 1, c. 460).
+
+## 7. Titoli 5, 6, 7 e 9: perché non sono risorse dell'anno
+
+Queste entrate non aumentano le risorse a disposizione del comune:
+
+- il **Titolo 5** registra la vendita di attività finanziarie (per esempio quote di società) o la riscossione di crediti concessi: il comune trasforma un'attività in denaro;
+- il **Titolo 6** registra i nuovi prestiti (mutui, obbligazioni): sono debiti che andranno restituiti, e la loro restituzione sarà una spesa;
+- il **Titolo 7** registra le anticipazioni di cassa del tesoriere: prestiti brevi per superare momenti di mancanza di liquidità, da chiudere entro l'anno; hanno uno specchio identico nella spesa;
+- il **Titolo 9** registra le partite di giro e le operazioni per conto terzi, come le ritenute fiscali e previdenziali sugli stipendi: il comune incassa e poi riversa la stessa somma.
+
+## Fonti ufficiali
+
+- **Classificazione**: D.Lgs. 118/2011, Allegato 13/2 (*elenco dei titoli, tipologie e categorie di entrata degli enti locali*), nella versione aggiornata nel 2026; Allegato 6 (*piano dei conti integrato*), compresa la versione in vigore dal 2027. Sulle [pagine Arconet della Ragioneria Generale dello Stato](https://www.rgs.mef.gov.it/VERSIONE-I/e_government/amministrazioni_pubbliche/arconet/schemi_di_bilancio/).
+- **Regole contabili**: D.Lgs. 267/2000 (TUEL), artt. 178-181; D.Lgs. 118/2011, Allegato 4/2 (*principio contabile applicato della contabilità finanziaria*), versione dal 2026, sulla [pagina Arconet dei principi contabili](https://www.rgs.mef.gov.it/VERSIONE-I/e_government/amministrazioni_pubbliche/arconet/principi_contabili/).
+- **Tributi** (testo vigente su [Normattiva](https://www.normattiva.it)): L. 160/2019, art. 1, cc. 738-783 (IMU) e cc. 816-847 (canone unico e mercatale); D.Lgs. 360/1998, art. 1 (addizionale IRPEF); L. 147/2013, art. 1, cc. 639-668 (TARI); D.Lgs. 23/2011, art. 4 (imposta di soggiorno); D.L. 16/2014, art. 6 (IMU al netto). Ministero dell'economia e delle finanze, Dipartimento delle Finanze, Circolare n. 1/DF del 18 marzo 2020 (chiarimenti sulla nuova IMU).
+- **Perequazione**: L. 228/2012, art. 1, c. 380-ter; L. 232/2016, art. 1, cc. 448-452; D.Lgs. 216/2010 (fabbisogni standard). Camera dei deputati, Servizio Studi, [*Il Fondo di solidarietà comunale e il Fondo speciale equità livello dei servizi*](https://temi.camera.it/leg19/temi/tl18_il_fondo_di_solidariet__comunale_e_la_perequazione_d_d.html), aggiornato a marzo 2026.
+:::
+
+::: {.pfm-en}
+These notes explain where the resources of an Italian municipality (*comune*) come from and how they are recorded in its budget. They follow the harmonised accounting system of D.Lgs. 118/2011, which all local authorities use since 2016. The rules are updated to October 2026. Official names of budget items are kept in Italian, in «quotes», as they appear in the official documents. **All numbers in the examples are made up**: they only show how the calculations work.
+
+The notes cover revenue only. Spending, and the way revenue and spending combine in the end-of-year result (residui, fondo pluriennale vincolato, risultato di amministrazione), will be covered in separate notes.
+
+## 1. How revenue is classified
+
+### Three levels: titolo, tipologia, categoria
+
+Allegato 13/2 of D.Lgs. 118/2011 classifies the revenue of local authorities in three levels:
+
+- the **titolo** gives the broad nature of the revenue (for example: taxes, transfers, capital revenue);
+- the **tipologia** gives the nature of the revenue inside the titolo (for example, in Titolo 1: taxes, tax shares, equalisation funds);
+- the **categoria** gives the single revenue item (for example: «Imposta municipale propria», the property tax).
+
+A municipality has seven revenue titoli. Titolo 8 does not exist for local authorities.
+
+| Titolo | Official name | Is it a resource of the year? |
+|---|---|---|
+| 1 | «Entrate correnti di natura tributaria, contributiva e perequativa» (taxes and equalisation) | Yes |
+| 2 | «Trasferimenti correnti» (current transfers) | Yes |
+| 3 | «Entrate extratributarie» (non-tax revenue) | Yes |
+| 4 | «Entrate in conto capitale» (capital revenue) | Yes, but normally earmarked for investment |
+| 5 | «Entrate da riduzione di attività finanziarie» (sale of financial assets) | No: the municipality sells or collects a financial asset it already owned |
+| 6 | «Accensione prestiti» (new loans) | No: it is a debt that must be repaid |
+| 7 | «Anticipazioni da istituto tesoriere/cassiere» (cash advances) | No: a short-term cash loan, to be closed within the year |
+| 9 | «Entrate per conto terzi e partite di giro» (pass-through items) | No: money collected on behalf of others and then paid over (for example taxes withheld on wages) |
+
+The diagram shows the titoli and the main tipologie. The next sections describe them one by one.
+
+```{mermaid}
+flowchart LR
+  R["MUNICIPAL<br/>REVENUE"] --> T1["Titolo 1<br/>Taxes and equalisation"]
+  R --> T2["Titolo 2<br/>Current transfers"]
+  R --> T3["Titolo 3<br/>Non-tax revenue"]
+  R --> T4["Titolo 4<br/>Capital revenue"]
+  R --> TX["Titoli 5, 6, 7, 9<br/>financial operations<br/>and pass-through items"]
+  T1 --> A["Tip. 101 Taxes<br/>IMU, addizionale IRPEF,<br/>TARI, tourist tax"]
+  T1 --> F["Tip. 301 and 302<br/>Equalisation funds<br/>(FSC)"]
+  T2 --> TS["From State, Region,<br/>other bodies, EU"]
+  T3 --> T3a["Services, assets,<br/>fines, interest"]
+  T4 --> T4a["Investment grants,<br/>sales of assets,<br/>building permits"]
+```
+
+### A fourth and fifth level: the chart of accounts
+
+Below the categoria, every revenue item has a code in the **piano dei conti integrato** (the chart of accounts, Allegato 6 of D.Lgs. 118/2011), down to a fifth level. The code is read from left to right. For example, for IMU:
+
+| Level | Code | Official name |
+|---|---|---|
+| I | E.1.00.00.00.000 | «Entrate correnti di natura tributaria, contributiva e perequativa» (the titolo) |
+| II | E.1.01.00.00.000 | «Tributi» |
+| III | E.1.01.01.00.000 | «Imposte, tasse e proventi assimilati» (tipologia 101) |
+| IV | E.1.01.01.06.000 | «Imposta municipale propria» (the categoria) |
+| V | E.1.01.01.06.001 | «Imposta municipale propria riscossa a seguito dell'attività ordinaria di gestione» |
+| V | E.1.01.01.06.002 | «Imposte municipale propria riscosse a seguito di attività di verifica e controllo» |
+
+The fifth level separates spontaneous payments by taxpayers (.001) from money recovered through anti-evasion checks (.002). The same split exists for almost every tax.
+
+::: {.callout-note collapse="true"}
+## For users of budget data (BDAP)
+- The public databases (OpenBDAP of the Ragioneria Generale dello Stato) report outturn budgets by titolo and tipologia and, in separate schedules, by categoria.
+- Do not add Titoli 5, 6, 7 and 9 to "total revenue": they are loans, cash operations and pass-through items. An indicator of "own revenue" or "financial autonomy" is built from Titoli 1, 2 and 3.
+- Classifications change over time. Always check the version of Allegato 13/2 and of the chart of accounts valid for the year of the data (for example the canone unico changes titolo in 2027, see section 3.6).
+:::
+
+## 2. The phases of revenue
+
+The consolidated law on local authorities (TUEL, D.Lgs. 267/2000, art. 178) states that the phases of revenue are «l'accertamento, la riscossione ed il versamento».
+
+1. **Accertamento** (art. 179). The first phase: on the basis of proper documents, the municipality checks the reason for the credit and its legal title, identifies the debtor, quantifies the amount and sets the due date. The accertamento is recorded when the obligation is complete and is **assigned to the year in which the obligation falls due** (art. 179, c. 3-bis). The TUEL adds: «È vietato l'accertamento attuale di entrate future» (future revenue cannot be recorded now).
+2. **Riscossione** (art. 180). The actual collection of the money by the treasurer or another collecting agent, ordered with an *ordinativo di incasso*.
+3. **Versamento** (art. 181). The transfer of the collected money into the municipality's accounts. Internal collecting agents must pay it to the treasurer within the time set by the accounting regulation, at most every fifteen working days.
+
+Revenue recorded but not yet collected at the end of the year becomes a **residuo attivo**. If it may never be collected, the municipality must set aside a matching amount in the **fondo crediti di dubbia esigibilità** (FCDE, a provision for doubtful credits). Residui and the FCDE will be explained in the notes on the risultato di amministrazione.
+
+### When the main revenues are recorded
+
+The moment of the accertamento depends on the type of revenue. The rules are in the TUEL (art. 179, c. 2) and in the accounting principle on financial accounting (Allegato 4/2 of D.Lgs. 118/2011, points 3.6 and 3.7).
+
+| Revenue | When it is recorded | Source |
+|---|---|---|
+| Taxes self-assessed and paid by the taxpayer (for example IMU) | On the basis of the money collected by the closing of the outturn budget, and in any case by the deadline for approving it | All. 4/2, p. 3.7.5 |
+| Addizionale comunale IRPEF | With a special rule based on previous years (see section 3.3) | All. 4/2, p. 3.7.5 |
+| Taxes collected through rolls, assessment notices or billing lists (often TARI and anti-evasion recoveries) | In the year in which the roll, notice or billing list is issued, if the payment deadline falls within the deadline of the outturn budget | All. 4/2, p. 3.7.1 |
+| Penalties and interest on enforced-collection rolls | On a cash basis (when collected) | All. 4/2, p. 3.7.1 |
+| Transfers from other public administrations | In the year in which the paying administration records its spending commitment. For transfers from the Ministry of the Interior, the amounts ("spettanze") published on its website are the reference | TUEL art. 179, c. 2, let. c-bis; All. 4/2, p. 3.6 b |
+| Building permits | Recorded when the permit is issued; the revenue is assigned to the years in which the payments set in the permit fall due | All. 4/2, p. 3.6 d |
+
+## 3. Titolo 1: taxes and equalisation
+
+Titolo 1 of a municipality has four tipologie:
+
+- **101 «Imposte tasse e proventi assimilati»**: the municipality's taxes;
+- **104 «Compartecipazioni di tributi»**: shares of State taxes assigned to municipalities (for example «Compartecipazione IRPEF ai Comuni»);
+- **301 «Fondi perequativi da Amministrazioni Centrali»**: mainly the Fondo di solidarietà comunale;
+- **302 «Fondi perequativi dalla Regione o Provincia autonoma»**.
+
+Note: tipologie 301 and 302 are not taxes. They are equalisation transfers, classified in Titolo 1 by law.
+
+### 3.1 The municipality's taxes (tipologia 101)
+
+The categories of tipologia 101 that matter for a municipality today are:
+
+| Categoria | Official name | What it contains |
+|---|---|---|
+| 1010106 | «Imposta municipale propria» | IMU, the property tax |
+| 1010116 | «Addizionale comunale IRPEF» | Municipal surcharge on personal income tax |
+| 1010141 | «Imposta di soggiorno» | Tourist tax on overnight stays |
+| 1010151 | «Tassa smaltimento rifiuti solidi urbani» | Old name (TARSU) used by many municipalities also for TARI |
+| 1010161 | «Tributo comunale sui rifiuti e sui servizi» | Name of TARES (2013), used by other municipalities for TARI |
+| 1010178, 1010179 | Canone unico patrimoniale and canone mercatale | Only from 2027 (see section 3.6) |
+
+Other categories (ICI, TASI, advertising tax, TOSAP) refer to abolished taxes: today they can only contain arrears or recoveries of past years.
+
+### 3.2 IMU, the municipal property tax
+
+IMU is regulated by L. 160/2019, art. 1, commi 738-783 (the "new IMU" from 2020, which also absorbed TASI).
+
+**What is taxed.** The taxable event is the **possession of real estate**: buildings, building land and agricultural land (c. 740). The main home does not pay, except luxury homes (cadastral categories A/1, A/8, A/9).
+
+**The tax base.** For a building registered in the land registry, the tax base is the cadastral income (*rendita catastale*) at 1 January, **increased by 5%** and multiplied by a coefficient that depends on the cadastral category (c. 745):
+
+| Cadastral category | Multiplier |
+|---|---|
+| Group A (except A/10), C/2, C/6, C/7 | 160 |
+| Group B, C/3, C/4, C/5 | 140 |
+| A/10 (offices) and D/5 (banks, insurance) | 80 |
+| Group D, except D/5 | 65 |
+| C/1 (shops) | 55 |
+
+For building land, the base is the market value at 1 January (c. 746).
+
+**The rates.** The law sets a base rate. The municipal council can change it within limits set by law:
+
+| Property | Base rate | The municipality can... | Comma |
+|---|---|---|---|
+| Buildings and land other than the main home | 0.86% | raise it up to 1.06% or lower it to zero | 754 |
+| Luxury main home (A/1, A/8, A/9) | 0.5% | raise it by 0.1 points or lower it to zero; €200 deduction | 748, 749 |
+| Group D buildings (productive use) | 0.86%, of which 0.76% **to the State** | raise it up to 1.06% or lower it down to 0.76% | 753, 744 |
+| Agricultural land | 0.76% | raise it up to 1.06% or lower it to zero | 752 |
+| Rural buildings used for farming | 0.1% | only lower it to zero | 750 |
+
+Municipalities that applied the TASI surcharge until 2019 can go 0.08 points above 1.06%, so up to 1.14%, in the same measure as in 2015; in later years they can only reduce it (c. 755).
+
+**Main reductions and exemptions.** The tax base is cut by 50% for buildings of historical or artistic interest, for unfit buildings that are actually not used, and for homes lent free of charge to parents or children who live there, under the conditions set by law (c. 747). For homes rented at an agreed rent (*canone concordato*) the tax is cut to 75% (c. 760). Exempt, among others, are agricultural land owned and farmed by professional farmers (c. 758), buildings of public bodies used for institutional tasks and places of worship (c. 759), and from 2022 buildings built by firms for sale and not rented out (c. 751).
+
+**Payments.** The taxpayer computes the tax and pays it in two instalments, on **16 June** and **16 December** (c. 762). The first instalment uses the rates of the previous year; the balance uses the rates of the year, published on the website of the Dipartimento delle Finanze by 28 October. The resolution must include the *prospetto delle aliquote* (rate table) filled in on the Portale del federalismo fiscale; without it the resolution has no effect (cc. 756-757). If the resolution is not published by 28 October, the previous year's rates apply; but from the first year in which the rate table is mandatory, a municipality without a valid resolution published in time applies the legal **base rates** (c. 767).
+
+**Example 1: a second home.** A flat in category A/2 has a cadastral income of €750. The municipality applies 1.06%.
+
+| Step | Calculation | Result |
+|---|---|---|
+| Increased cadastral income | 750 × 1.05 | €787.50 |
+| Tax base | 787.50 × 160 | €126,000 |
+| Annual IMU | 126,000 × 1.06% | €1,335.60 |
+| June instalment (previous year's rate, here the same) | half | €667.80 |
+| December instalment (balance) | 1,335.60 − 667.80 | €667.80 |
+
+If the same flat were rented at an agreed rent, the tax would fall to 75%: €1,001.70.
+
+**Example 2: a warehouse.** A warehouse in category D/7 has a cadastral income of €10,000. The municipality applies 1.06%.
+
+| Step | Calculation | Result |
+|---|---|---|
+| Tax base | 10,000 × 1.05 × 65 | €682,500 |
+| Total IMU | 682,500 × 1.06% | €7,234.50 |
+| of which to the State (0.76%) | 682,500 × 0.76% | €5,187.00 |
+| of which to the municipality (0.30%) | 682,500 × 0.30% | €2,047.50 |
+
+The firm pays everything with the same F24 form, but only €2,047.50 enters the municipal budget.
+
+**How IMU enters the budget.** Two rules matter.
+
+1. IMU is recorded **on the basis of collections**, including those received by the closing of the outturn budget (All. 4/2, p. 3.7.5): the municipality does not record what it should collect, but what it collects.
+2. Part of the IMU paid by taxpayers never reaches the municipality: it is withheld at source to fund the Fondo di solidarietà comunale (section 3.8). The municipality records IMU **net** of this withholding (D.L. 16/2014, art. 6).
+
+::: {.callout-note collapse="true"}
+## For users of budget data (BDAP)
+- IMU in municipal budgets is **net** of the share withheld for the FSC and excludes the State share on group D buildings. It is therefore lower than the IMU paid by the municipality's taxpayers. For total revenue, use the Dipartimento delle Finanze data on F24 payments.
+- Money recovered through checks is in the fifth level .002 of the chart of accounts, or, if collected through notices or rolls, can appear in years different from the tax year.
+:::
+
+### 3.3 Addizionale comunale IRPEF (income-tax surcharge)
+
+The addizionale is regulated by D.Lgs. 360/1998, art. 1.
+
+- **Tax base**: total IRPEF income, net of deductible expenses (c. 4). The addizionale is due only if net IRPEF is due for the same year.
+- **Rate**: set by the municipality with a regulation. The increase **cannot exceed 0.8 percentage points** (c. 3). The municipality can also set an income-based **exemption threshold** (c. 3-bis).
+- **Which municipality gets it**: the municipality of the taxpayer's fiscal domicile at 1 January of the year the addizionale refers to (c. 4).
+- **Payments**: a 30% advance and a balance. The advance is computed on the previous year's income, with the previous year's rate and threshold (c. 4). For employees and pensioners the withholding agent pays: the advance is withheld in up to nine monthly instalments from March; the balance in up to eleven instalments after the year-end adjustment (c. 5).
+
+**Example 3: a taxpayer.** The municipality applies 0.8%, with an exemption threshold of €12,000. An employee has a taxable income of €27,000 in 2025 and €28,000 in 2026.
+
+| Step | Calculation | Result |
+|---|---|---|
+| Addizionale 2026 | 28,000 × 0.8% | €224.00 |
+| 2026 advance, withheld in 2026 | 30% × (27,000 × 0.8%) | €64.80 |
+| 2026 balance, withheld in 2027 | 224.00 − 64.80 | €159.20 |
+
+A taxpayer with an income of €11,000 would pay nothing, because the income is below the exemption threshold.
+
+**How the addizionale enters the budget.** The municipality does not know how much it will collect, because the balance arrives the year after. So the accounting principle sets a prudent rule (All. 4/2, p. 3.7.5): in year *t* the municipality can record an amount equal to the one recorded in year *t*−2, but **not higher** than what it collected for that tax year (in year *t*−2 for the current year, and in year *t*−1 as residui). If the municipality changes the rate, the amount is rescaled; if it introduces the addizionale for the first time, it uses a prudent estimate, which cannot exceed the result of the simulator on the Portale del federalismo fiscale.
+
+**Example 4: the accertamento in 2026.**
+
+| Item | Amount |
+|---|---|
+| Recorded in 2024 | €1,000,000 |
+| Collected in 2024 (current year) | €700,000 |
+| Collected in 2025 for tax year 2024 (residui) | €280,000 |
+| Cap: 700,000 + 280,000 | €980,000 |
+| **Amount that can be recorded in 2026** | **€980,000** (the lower of 1,000,000 and 980,000) |
+
+### 3.4 TARI, the waste tax
+
+TARI is regulated by L. 147/2013, art. 1, commi 639-668.
+
+- **Taxable event**: possessing or occupying premises or open areas, for any use, that can produce urban waste (c. 641). If several people possess or occupy the same premises, they are jointly liable (c. 642).
+- **Cost coverage**: tariffs must ensure **the full coverage of the investment and operating costs** of the waste service (c. 654), including related costs such as street cleaning. TARI is therefore the price of a service: a high TARI signals an expensive service, not necessarily a high tax burden.
+- **How tariffs are set**: the municipality uses the criteria of D.P.R. 158/1999 (c. 651) or an alternative criterion based on the average quantity of waste per square metre and per type of activity (c. 652). The costs to cover are set in the economic-financial plan (*piano economico-finanziario*, PEF), drawn up with the tariff method of ARERA, the regulatory authority (for 2026-2029 the "MTR-3" method).
+- **Tariffa corrispettiva**: municipalities that measure the waste delivered by each user can replace TARI with a fee for the service, applied and collected directly by the waste operator (c. 668). In that case the revenue is not a tax and normally does not go through the municipal budget.
+- **Provincial levy**: together with TARI, users pay the provincial levy for environmental protection (c. 666), which goes to the province or metropolitan city.
+
+**How TARI enters the budget.** Usually the municipality sends payment notices (billing lists): TARI is recorded in the year in which the billing list is issued, for the full amount due (All. 4/2, p. 3.7.1). Since part of TARI is never paid, the provision for doubtful credits weighs heavily on this revenue.
+
+::: {.callout-note collapse="true"}
+## For users of budget data (BDAP)
+- The chart of accounts has no item called "TARI". Municipalities use category 1010151 «Tassa smaltimento rifiuti solidi urbani» or 1010161 «Tributo comunale sui rifiuti e sui servizi». To get TARI, **add the two categories**.
+- Municipalities with a tariffa corrispettiva have no TARI in their budget: a zero does not mean the service is free.
+- Recorded TARI includes the part that will never be collected: to measure actual revenue, also look at collections.
+:::
+
+### 3.5 Imposta di soggiorno (tourist tax)
+
+The tourist tax is regulated by D.Lgs. 23/2011, art. 4.
+
+- **Who can introduce it**: provincial capitals, unions of municipalities and municipalities in the regional lists of tourist towns or art cities (c. 1).
+- **How much**: up to **€5 per night**, graduated according to the price (c. 1). Provincial capitals with tourist nights at least twenty times the number of residents can go up to the maximum set for the contributo di soggiorno of Roma Capitale (c. 1-bis).
+- **Who pays and who remits**: guests of accommodation facilities pay; the manager of the facility is responsible for remitting the tax and filing the return, with the right to charge it to the guest (c. 1-ter).
+- **Use of revenue**: the revenue is **earmarked** for tourism, cultural and environmental heritage and the related local public services, the costs of waste collection and, within limits, urban security (c. 1).
+- **Alternative on small islands**: municipalities on small islands can introduce a landing fee (*contributo di sbarco*) instead of the tourist tax (c. 3-bis).
+
+### 3.6 Canone unico patrimoniale
+
+Since 2021 the **canone unico** (L. 160/2019, commi 816-836) has replaced the old levies on the use of public space and on advertising (TOSAP, COSAP, municipal advertising tax, bill-posting fees). Commi 837-847 introduced a similar fee for markets (*canone mercatale*).
+
+The canone unico is not a tax: it is a fee for the use of public assets. Until 2026 it is recorded in **Titolo 3** (non-tax revenue). From **2027** the new chart of accounts moves it into **Titolo 1**, tipologia 101, with items E.1.01.01.78 (canone unico) and E.1.01.01.79 (canone mercatale).
+
+::: {.callout-note collapse="true"}
+## For users of budget data (BDAP)
+Time series of "own taxes" therefore have **two breaks**: in 2021 (TOSAP and the advertising tax leave Titolo 1 and enter Titolo 3 as a fee) and in 2027 (the fee goes back into Titolo 1). For comparisons over time, treat the canone as a separate item.
+:::
+
+### 3.7 Tax shares (tipologia 104)
+
+Tipologia 104 collects shares of State taxes assigned to municipalities: the categories for municipalities are «Compartecipazione IVA ai Comuni», «Compartecipazione IRPEF ai Comuni» and «Altre compartecipazioni a comuni». In the budgets of municipalities in ordinary-statute regions these are usually small amounts.
+
+### 3.8 The Fondo di solidarietà comunale (tipologie 301 and 302)
+
+**What it is.** The Fondo di solidarietà comunale (FSC, municipal solidarity fund) is the main **equalisation** tool among municipalities: it moves resources from municipalities with large tax bases to municipalities with small tax bases or greater needs. It is regulated by L. 228/2012 (art. 1, c. 380-ter) and L. 232/2016 (art. 1, commi 448-452).
+
+**How large it is and where the money comes from.** The size is set by law: **€6,887.7 million in 2026** (L. 232/2016, c. 448, as amended by the 2026 budget law). A large part is paid by the municipalities themselves: **22% of IMU revenue at the base rate**, about €2.8 billion, is withheld at source (this is why IMU is recorded net, section 3.2). The rest comes from the State.
+
+**How it is split.** The fund has two main components (Camera dei deputati, Research Service, 2026).
+
+- The **compensating component** (*componente ristorativa*, about €3.8 billion in 2026) compensates municipalities for the revenue lost with the IMU and TASI exemptions on the main home introduced in 2016. It is split according to actual 2015 revenue.
+- The **traditional component** (€1,900.6 million for municipalities in ordinary-statute regions and €464.1 million for those in Sicily and Sardinia in 2026) is split partly according to the municipalities' **historical resources** and partly according to an **equalisation** criterion.
+
+On top of these there are State resources to correct the effects of the allocation (€672 million in 2026) and other smaller shares.
+
+**The equalisation criterion.** It is based on the difference between two quantities computed for each municipality in an ordinary-statute region:
+
+- **standard needs** (*fabbisogni standard*, D.Lgs. 216/2010): the financial needs of a municipality given its territorial and socio-demographic features, not given what it spent in the past;
+- **fiscal capacity** (*capacità fiscale*): the revenue the municipality would raise from its own sources by applying standard rates to its tax base, not its actual revenue.
+
+A municipality whose needs exceed its fiscal capacity receives resources; a municipality whose fiscal capacity exceeds its needs gives them up.
+
+**How much equalisation counts in 2026.** Two percentages grow every year.
+
+- The share of the traditional component split with the equalisation criterion: **80% in 2026**, up to 100% in 2030. The remaining 20% follows historical resources.
+- The **equalisation target** (*target perequativo*), the part of fiscal capacity that enters the calculation: **85% in 2026**, up to 100% from 2029. For the remaining 15% the historical criterion still applies.
+
+The actual weight of equalisation is the product of the two: **80% × 85% = 68%**. In addition, a correction mechanism limits large changes from one year to the next: it applies when a municipality's resources rise or fall by more than 4% relative to its historical resources (L. 232/2016, c. 450). From 2026 Roma Capitale is excluded from the allocation of the traditional component and pays a fixed contribution to the fund.
+
+**Example 5: the weight of equalisation (simplified).** Take a municipality that would receive €1,000,000 under the historical criterion alone, and €600,000 under the equalisation criterion alone.
+
+| Part | Calculation | Amount |
+|---|---|---|
+| 20% by historical resources | 0.20 × 1,000,000 | €200,000 |
+| 80% by the equalisation criterion, of which: | | |
+| – 85% by needs and capacity | 0.80 × 0.85 × 600,000 | €408,000 |
+| – 15% still by historical resources | 0.80 × 0.15 × 1,000,000 | €120,000 |
+| **Total** | 0.32 × 1,000,000 + 0.68 × 600,000 | **€728,000** |
+
+The example only shows the logic of the formula. The real allocation also includes the compensating component, the 4% correction and the additional resources, and is computed every year by the Ministry of the Interior, which pays the fund in two instalments, by May (66%) and by October.
+
+**Special-statute regions.** Municipalities in **Sicily and Sardinia** receive the FSC but do not take part in the equalisation mechanism based on needs and fiscal capacity. In the other special-statute regions (Valle d'Aosta, Friuli-Venezia Giulia, Trentino-Alto Adige) municipal finance is regulated by the region or the autonomous province: their equalisation funds are recorded in tipologia 302 «Fondi perequativi dalla Regione o Provincia autonoma».
+
+**A separate fund.** From 2025 the State resources earmarked for social services, nurseries and school transport for pupils with disabilities left the FSC and moved into the **Fondo speciale equità livello dei servizi**: they are assigned to municipalities in exchange for reaching *service targets* (*obiettivi di servizio*).
+
+::: {.callout-note collapse="true"}
+## For users of budget data (BDAP)
+- The FSC is in tipologia 301 (category 1030101 «Fondi perequativi dallo Stato»). For municipalities that pay in more than they receive, the "net FSC" can be negative: the payment does not appear as spending but as lower IMU (section 3.2).
+- When comparing municipalities in different regions, remember that IMU and the FSC are linked: an "own taxes" indicator without the FSC penalises municipalities with a large withholding.
+- An example of these data for the municipalities of one region is the [interactive map of Piedmont](../data/piemonte-fiscal-map/index.qmd).
+:::
+
+## 4. Titolo 2: current transfers
+
+Titolo 2 collects transfers that fund current spending. The tipologie say who pays:
+
+| Tipologia | Official name |
+|---|---|
+| 101 | «Trasferimenti correnti da Amministrazioni pubbliche» (State, Region, other local authorities, social security bodies) |
+| 102 | «Trasferimenti correnti da Famiglie» (households) |
+| 103 | «Trasferimenti correnti da Imprese» (firms, including sponsorships) |
+| 104 | «Trasferimenti correnti da Istituzioni Sociali Private» (non-profit bodies) |
+| 105 | «Trasferimenti correnti dall'Unione Europea e dal Resto del Mondo» |
+
+Many transfers are **earmarked** (*vincolati*): they can be spent only for the purpose for which they were given (for example regional funds for social services). Earmarked money not spent by the end of the year stays earmarked. As seen in section 2, a transfer is recorded when the paying body has committed the spending.
+
+## 5. Titolo 3: non-tax revenue
+
+Titolo 3 collects current revenue that is neither taxes nor transfers:
+
+| Tipologia | Official name | Examples |
+|---|---|---|
+| 100 | «Vendita di beni e servizi e proventi derivanti dalla gestione dei beni» | Fees for nurseries and school canteens, paid parking, rents and concessions of municipal property, canone unico until 2026 |
+| 200 | «Proventi derivanti dall'attività di controllo e repressione delle irregolarità e degli illeciti» | Fines, mainly for traffic offences |
+| 300 | «Interessi attivi» | Interest on deposits and loans granted |
+| 400 | «Altre entrate da redditi da capitale» | Dividends and profits of owned companies |
+| 500 | «Rimborsi e altre entrate correnti» | Refunds, insurance payouts |
+
+For services on individual demand (nurseries, canteens, sports facilities) users pay fees that often cover only part of the cost; the rest is covered by the municipality's other revenue.
+
+## 6. Titolo 4: capital revenue
+
+Titolo 4 collects revenue that funds **investment**:
+
+| Tipologia | Official name | Examples |
+|---|---|---|
+| 100 | «Tributi in conto capitale» | Taxes from amnesties and building regularisations |
+| 200 | «Contributi agli investimenti» | Grants from the State, the Region or the European Union for public works (including PNRR funds) |
+| 300 | «Altri trasferimenti in conto capitale» | Transfers to take over or cancel debts, to cover past deficits |
+| 400 | «Entrate da alienazione di beni materiali e immateriali» | Sales of municipal buildings and land |
+| 500 | «Altre entrate in conto capitale» | Building permits (chart of accounts E.4.05.01.01.001), capital refunds |
+
+As a rule, this revenue cannot fund current spending. Building-permit revenue has a use set by law (infrastructure works, maintenance of municipal property and other works listed in L. 232/2016, art. 1, c. 460).
+
+## 7. Titoli 5, 6, 7 and 9: why they are not resources of the year
+
+This revenue does not increase the resources available to the municipality:
+
+- **Titolo 5** records sales of financial assets (for example shares in companies) or the collection of loans granted: the municipality turns an asset into cash;
+- **Titolo 6** records new loans (mortgages, bonds): they are debts to be repaid, and their repayment will be spending;
+- **Titolo 7** records cash advances from the treasurer: short loans to overcome temporary cash shortages, to be closed within the year; they have an identical mirror item in spending;
+- **Titolo 9** records pass-through items and operations on behalf of third parties, such as tax and social security contributions withheld on wages: the municipality collects and then pays over the same amount.
+
+## Official sources
+
+- **Classification**: D.Lgs. 118/2011, Allegato 13/2 (*elenco dei titoli, tipologie e categorie di entrata degli enti locali*), in the version updated in 2026; Allegato 6 (*piano dei conti integrato*), including the version in force from 2027. On the [Arconet pages of the Ragioneria Generale dello Stato](https://www.rgs.mef.gov.it/VERSIONE-I/e_government/amministrazioni_pubbliche/arconet/schemi_di_bilancio/).
+- **Accounting rules**: D.Lgs. 267/2000 (TUEL), arts. 178-181; D.Lgs. 118/2011, Allegato 4/2 (*principio contabile applicato della contabilità finanziaria*), version from 2026, on the [Arconet principles page](https://www.rgs.mef.gov.it/VERSIONE-I/e_government/amministrazioni_pubbliche/arconet/principi_contabili/).
+- **Taxes** (current text on [Normattiva](https://www.normattiva.it)): L. 160/2019, art. 1, cc. 738-783 (IMU) and cc. 816-847 (canone unico and mercatale); D.Lgs. 360/1998, art. 1 (addizionale IRPEF); L. 147/2013, art. 1, cc. 639-668 (TARI); D.Lgs. 23/2011, art. 4 (imposta di soggiorno); D.L. 16/2014, art. 6 (IMU recorded net). Ministero dell'economia e delle finanze, Dipartimento delle Finanze, Circolare n. 1/DF of 18 March 2020 (clarifications on the new IMU).
+- **Equalisation**: L. 228/2012, art. 1, c. 380-ter; L. 232/2016, art. 1, cc. 448-452; D.Lgs. 216/2010 (standard needs). Camera dei deputati, Research Service, [*Il Fondo di solidarietà comunale e il Fondo speciale equità livello dei servizi*](https://temi.camera.it/leg19/temi/tl18_il_fondo_di_solidariet__comunale_e_la_perequazione_d_d.html), updated March 2026.
+:::
+
+```{=html}
+<script>
+(function () {
+  // Italian is the default; the choice is shared with the Piedmont map page
+  var IT = {
+    title: "Le entrate dei comuni italiani",
+    subtitle: "Come si finanzia un comune e come registra le sue entrate",
+    description: "Appunti sulle entrate dei comuni italiani: la classificazione del bilancio armonizzato (D.Lgs. 118/2011), le fasi dell'entrata, IMU, addizionale IRPEF, TARI, imposta di soggiorno, canone unico, Fondo di solidarietà comunale, trasferimenti, entrate extratributarie e in conto capitale, con esempi di calcolo.",
+    published: "Pubblicato", date: "30 ottobre 2026",
+    tab: "Le entrate dei comuni italiani – Giovanni Cuttica",
+    toc: "In questa pagina"
+  };
+  var titleEl = document.querySelector("h1.title"), subEl = document.querySelector("p.subtitle"),
+      descEl = document.querySelector(".quarto-title-block .description p, .quarto-title-block .description"),
+      pubEl = document.querySelector(".quarto-title-meta-heading"),
+      dateEl = document.querySelector(".quarto-title-meta-contents .date");
+  var EN = { title: titleEl && titleEl.textContent, subtitle: subEl && subEl.textContent,
+             description: descEl && descEl.textContent, published: pubEl && pubEl.textContent,
+             date: dateEl && dateEl.textContent, tab: document.title, toc: "On this page" };
+
+  function apply(l) {
+    try { localStorage.setItem("pfm-lang", l); } catch (e) {}
+    document.body.classList.remove("pfm-lang-it", "pfm-lang-en");
+    document.body.classList.add("pfm-lang-" + l);
+    document.documentElement.lang = l;
+    document.getElementById("pfm-btn-it").classList.toggle("active", l === "it");
+    document.getElementById("pfm-btn-en").classList.toggle("active", l === "en");
+    var T = l === "it" ? IT : EN;
+    if (titleEl) titleEl.textContent = T.title;
+    if (subEl) subEl.textContent = T.subtitle;
+    if (descEl) descEl.textContent = T.description;
+    if (pubEl) pubEl.textContent = T.published;
+    if (dateEl) dateEl.textContent = T.date;
+    document.title = T.tab;
+    // page index (Quarto does not build it for headings inside the language
+    // blocks): rebuild it from the h2/h3 headings of the chosen language
+    var side = document.getElementById("quarto-margin-sidebar");
+    if (side) {
+      var heads = document.querySelectorAll((l === "it" ? ".pfm-it" : ".pfm-en") + " h2, " +
+                                            (l === "it" ? ".pfm-it" : ".pfm-en") + " h3");
+      var html = "<nav id='TOC' role='doc-toc' class='toc-active'><h2 id='toc-title'>" + T.toc + "</h2><ul>";
+      heads.forEach(function (h, n) {
+        if (h.closest(".callout")) return;
+        if (!h.id) { h.id = "sec-" + l + "-" + n; }
+        html += "<li" + (h.tagName === "H3" ? " style='margin-left:0.8rem'" : "") +
+                "><a class='nav-link' href='#" + h.id + "'>" + h.textContent + "</a></li>";
+      });
+      side.innerHTML = html + "</ul></nav>";
+    }
+  }
+  var lang = "it";
+  try { if (localStorage.getItem("pfm-lang") === "en") lang = "en"; } catch (e) {}
+  document.getElementById("pfm-btn-it").addEventListener("click", function () { apply("it"); });
+  document.getElementById("pfm-btn-en").addEventListener("click", function () { apply("en"); });
+  apply(lang);
+})();
+</script>
+```
